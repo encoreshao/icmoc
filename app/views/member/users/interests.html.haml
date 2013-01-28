@@ -1,0 +1,28 @@
+.row
+  = simple_nested_form_for @user, url: member_user_path(@user), html: { class: 'form-horizontal', multipart: true } do |f|
+    %fieldset
+      - if @user.hobbies.empty?
+        = f.simple_fields_for :hobbies, @user.hobbies.build do |p|
+          = p.input :books
+          = p.input :brand
+          = p.input :favorite_people
+          = p.input :hobby
+          = p.input :movie
+          = p.input :music
+          = p.input :sports
+      - else
+        - @user.hobbies.each do |hobby|
+          = f.simple_fields_for :hobbies, hobby do |p|
+            = p.input :books
+            = p.input :brand
+            = p.input :favorite_people
+            = p.input :hobby
+            = p.input :movie
+            = p.input :music
+            = p.input :sports
+
+
+    .control-group
+      .controls= f.submit class: 'btn'
+
+    

@@ -1,0 +1,19 @@
+.row
+  = simple_nested_form_for @user, url: member_user_path(@user), html: { class: 'form-horizontal', multipart: true } do |f|
+    %fieldset
+      - if @user.educationals.empty?
+        = f.simple_fields_for :educationals, @user.educationals.build do |p|
+          = p.input :school_type, collection: passport_options(DEFAULTS[:educationals]), selected: '0'
+          = p.input :school_name
+          = p.input :year_in, as: :date, order: [:year], start_year: 1900, end_year: Date.today.year
+      - else
+        - @user.educationals.each do |educational|
+          = f.simple_fields_for :educationals, educational do |p|
+            = p.input :school_type, collection: passport_options(DEFAULTS[:educationals]), selected: '0'
+            = p.input :school_name
+            = p.input :year_in, as: :date
+
+    .control-group
+      .controls= f.submit class: 'btn'
+
+    

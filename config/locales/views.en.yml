@@ -1,0 +1,29 @@
+zh:
+  title: ICMOC
+  actions:
+    search: Search
+    new: New
+    edit: Edit
+    update: Update
+    create: Create
+    save: Save
+    back: Back
+    options: Options
+    show: Show
+    destroy: Destroy
+    mark_as_user: Mark AS User
+    mark_as_admin: Mark AS Admin
+    sign_in: Sign in
+    sign_up: Sign up
+    logout: logout
+
+  views:
+    sidebar: 
+      title: Sidebar
+    header:
+    pagination:
+      first: "Page"
+      last: "End"
+      previous: "Prev"
+      next: "Next"
+      truncate: "......"

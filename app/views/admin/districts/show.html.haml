@@ -1,0 +1,22 @@
+.page-header
+  %h3
+    = resource.class.model_name.human
+    %small
+    = link_to t('actions.back').html_safe, collection_path, class: 'btn btn-success'
+    = link_to t('actions.edit').html_safe, edit_resource_path, class: 'btn'
+
+.district-detail
+  %h3
+    = resource.city.province.name
+    >
+    = resource.city.name
+  %h5
+    %p
+      = resource.class.human_attribute_name(:name)
+      = resource.name
+    %p
+      = resource.class.human_attribute_name(:name_en)
+      = resource.name_en
+    %p
+      = resource.class.human_attribute_name(:name_abbr)
+      = resource.name_abbr

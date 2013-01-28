@@ -1,0 +1,13 @@
+en:
+  member:
+    header:
+      title: List header
+      basic: Basic
+      details: Details
+      interests: Interests
+      education: Education
+      career: Career
+      portrait: Portrait
+      privacy: Privacy Setting
+      help: Help
+      other: Other

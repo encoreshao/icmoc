@@ -1,0 +1,28 @@
+.page-header
+  %h3
+    = collection.name.safe_constantize.model_name.human
+    %small
+    = link_to t('actions.new').html_safe, new_resource_path, class: 'btn'
+
+= render 'search', url: admin_users_path
+
+.users-container
+  %table.table
+    %tr
+      %th= collection.name.safe_constantize.human_attribute_name(:name)
+      %th= collection.name.safe_constantize.human_attribute_name(:email)
+      %th= collection.name.safe_constantize.human_attribute_name(:last_sign_in_ip)
+      %th{class: 'span3'}
+    - collection.each do |resource|
+      %tr
+        %td= resource.name
+        %td= resource.email
+        %td= resource.last_sign_in_ip
+        %td
+          - if resource.super_admin?
+            = link_to t('actions.mark_as_user'), mark_as_user_admin_user_path(resource), class: 'btn btn-warning', method: :post
+          - else
+            = link_to t('actions.mark_as_admin'), mark_as_admin_admin_user_path(resource), class: 'btn btn-warning', method: :post
+          = render partial: 'admin/shared/options', locals: { resource: resource }
+
+  = paginate collection

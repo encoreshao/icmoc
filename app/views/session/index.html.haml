@@ -1,0 +1,5 @@
+%section
+  = simple_form_for @user, url: session_path do |f|
+    = f.input :email, autofocus: true, required: true
+    = f.input :password, required: true
+    = f.button :submit, t('actions.sign_in'), class: 'btn btn-primary'

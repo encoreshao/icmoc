@@ -1,0 +1,73 @@
+zh:
+  activerecord:
+    symbolizes:
+      user:
+        blood:
+          type_a: A
+          type_b: B
+          type_ab: AB
+          type_o: O
+    models:
+      province: 省份
+      city: 城市
+      district: 地区
+      user: 用户
+      user_detail: 详细信息
+
+    attributes:
+      user:
+        name: 用户名
+        email: 电子邮件
+        sign_in_count: 登录次数
+        remember_created_at: 记住我
+        last_sign_in_ip: 最后登录IP
+        last_sign_in_at: 最后登录时间
+        current_sign_in_ip: 当前登录IP
+        current_sign_in_at: 当前登录时间
+        password: 密码
+        password_confirmation: 确认密码
+        birthday: 生日
+        gender: 性别
+        blood: 血型
+        status: 状态
+        biography: 个人简介
+        is_hidden: 是否删除
+        avatar: 头像
+        birthplace: 出生地
+        birthplace_province_id: 出生地省份
+        birthplace_city_id: 出生地城市
+        birthplace_district_id: 出生地地区
+        residence: 居住地
+        residence_province_id: 居住地省份
+        residence_city_id: 居住地城市
+        residence_district_id: 居住地地区
+      user_detail:
+        character: 性格
+        contact_information: 联系方式 
+        educational_level: 教育程度
+        habit: 个人习惯
+        habit_sleep: 
+        habit_smoke: 
+        habit_wine: 
+        marriage: 婚姻状况 
+        profession: 当前职业
+        somatotype: 体型
+      user_hobby:
+        books: 书籍
+        brand: 品牌
+        movie: 电影
+        music: 音乐
+        sports: 运动
+        favorite_people: 欣赏的人
+        hobby: 其他爱好
+      user_educational:
+        school_name: 学校名称
+        school_type: 学校类型
+        year_in: 入学年份
+      user_work:
+        unit_name: 工作单位
+        time: 工作时间
+        start_year: 开始年份
+        end_year: 结束年份
+        start_month: 开始月份
+        end_month: 结束月份

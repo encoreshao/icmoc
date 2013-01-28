@@ -1,0 +1,23 @@
+.page-header
+  %h3
+    = collection.name.safe_constantize.model_name.human
+    %small
+    = link_to t('actions.new').html_safe, new_resource_path, class: 'btn'
+
+= render 'search', url: admin_provinces_path
+
+.provinces-container
+  %table.table
+    %tr
+      %th= collection.name.safe_constantize.human_attribute_name(:name)
+      %th= collection.name.safe_constantize.human_attribute_name(:name_en)
+      %th= collection.name.safe_constantize.human_attribute_name(:name_abbr)
+      %th{class: 'span1'}
+    - collection.each do |resource|
+      %tr
+        %td= resource.name
+        %td= resource.name_en
+        %td= resource.name_abbr
+        %td= render partial: 'admin/shared/options', locals: { resource: resource }
+
+  = paginate collection

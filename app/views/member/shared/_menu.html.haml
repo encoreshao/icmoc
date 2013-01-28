@@ -1,0 +1,19 @@
+- unless current_user.blank?
+  .navbar
+    .navbar-inner
+      %ul.nav.pull-left
+        = sec_nav :basic do
+          = link_to t('member.header.basic'), basic_member_users_path
+        = sec_nav :details do
+          = link_to t('member.header.details'), details_member_users_path
+        = sec_nav :interests do
+          = link_to t('member.header.interests'), interests_member_users_path
+        = sec_nav :education do
+          = link_to t('member.header.education'), education_member_users_path
+        = sec_nav :career do
+          = link_to t('member.header.career'), career_member_users_path
+        = sec_nav :portrait do
+          = link_to t('member.header.portrait'), portrait_member_users_path
+        %li.divider-vertical
+      %ul.nav.pull-right
+        %li= link_to t('actions.logout'), logout_path, method: :delete

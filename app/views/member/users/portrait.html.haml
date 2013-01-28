@@ -1,0 +1,8 @@
+.row
+  = simple_form_for @user, url: member_user_path(@user), html: { class: 'form-horizontal' } do |f|
+    = f.input :avatar, as: :file
+
+    .control-group
+      .controls= f.submit class: 'btn'
+
+    

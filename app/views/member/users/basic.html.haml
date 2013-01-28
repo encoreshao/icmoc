@@ -1,0 +1,12 @@
+.row
+  = simple_form_for @user, url: basic_member_users_path, html: { class: 'form-horizontal' } do |f|
+    = f.input :name,    required: true
+    = f.input :email,   required: true, disabled: true
+    = f.input :gender,  as: :radio_buttons
+    = f.input :birthday, as: :date, use_month_numbers: true
+    = f.input :biography, as: :text, input_html: { cols: 50, rows: 3 }
+
+    .control-group
+      .controls= f.submit class: 'btn'
+
+    

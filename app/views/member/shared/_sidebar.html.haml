@@ -1,0 +1,21 @@
+- unless current_user.blank?
+  .span3
+    .nav.nav-list
+      %li.nav-header= t('member.header.title')
+      = sec_nav :basic do
+        = link_to t('member.header.basic'), basic_member_users_path
+      = sec_nav :details do
+        = link_to t('member.header.details'), details_member_users_path
+      = sec_nav :interests do
+        = link_to t('member.header.interests'), interests_member_users_path
+      = sec_nav :education do
+        = link_to t('member.header.education'), education_member_users_path
+      = sec_nav :career do
+        = link_to t('member.header.career'), career_member_users_path
+      = sec_nav :portrait do
+        = link_to t('member.header.portrait'), portrait_member_users_path
+      
+      %li.nav-header= t('member.header.privacy')
+      %li= link_to t('member.header.other'), '#'
+      %li.divider
+      %li= link_to t('member.header.help'), '#'

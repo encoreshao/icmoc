@@ -1,0 +1,29 @@
+zh:
+  title: ICMOC
+  actions:
+    search: 查询
+    new: 新建
+    edit: 编辑
+    update: 修改
+    create: 创建
+    save: 保存
+    back: 返回
+    options: 操作
+    show: 查看
+    destroy: 删除
+    mark_as_user: 设置普通用户
+    mark_as_admin: 设置管理员
+    logout: 退出
+    sign_in: 登录
+    sign_up: 注册
+
+  views:
+    sidebar: 
+      title: 导航
+    header:
+    pagination:
+      first: "首页"
+      last: "末页"
+      previous: "上一页"
+      next: "下一页"
+      truncate: "......"

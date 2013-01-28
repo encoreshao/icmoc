@@ -1,0 +1,23 @@
+.row
+  = simple_nested_form_for @user, url: member_user_path(@user), html: { class: 'form-horizontal', multipart: true } do |f|
+    %fieldset
+      - if @user.works.empty?
+        = f.simple_fields_for :works, @user.works.build do |p|
+          = p.input :unit_name
+          = p.input :start_year, as: :date, order: [:year], start_year: 1900, end_year: Date.today.year
+          = p.input :start_month, as: :date, order: [:month], use_month_numbers: true
+          = p.input :end_year, as: :date, order: [:year], start_year: 1900, end_year: Date.today.year
+          = p.input :end_month, as: :date, order: [:month], use_month_numbers: true
+      - else
+        - @user.works.each do |work|
+          = f.simple_fields_for :works, work do |p|
+            = p.input :unit_name
+            = p.input :start_year, as: :date, order: [:year], start_year: 1900, end_year: Date.today.year
+            = p.input :start_month, as: :date, order: [:month]
+            = p.input :end_year, as: :date, order: [:year], start_year: 1900, end_year: Date.today.year
+            = p.input :end_month, as: :date, order: [:month]
+
+    .control-group
+      .controls= f.submit class: 'btn'
+
+    

@@ -1,0 +1,36 @@
+body {
+  width: 100%;
+  form {
+    .control-group {
+      label {
+        float: left;
+        min-width: 15%;
+        text-align: right;
+      }
+      .controls {
+        select {
+          width: 120px;
+        }
+        .radio {
+          label { 
+            min-width: 10%;
+            text-align: center;
+          }
+          input[type=radio] {
+            margin-left: 0px;
+          }
+        }
+        .checkbox {
+          label {
+            text-align: left;
+            min-width: 5%;
+            margin-left: 2px;
+          }
+          input {
+            margin-left: 0px;
+          }
+        }
+      }
+    }
+  }
+}

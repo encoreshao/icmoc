@@ -1,0 +1,75 @@
+en:
+  activerecord:
+    symbolizes:
+      user:
+        blood:
+          type_a: A
+          type_b: B
+          type_ab: AB
+          type_o: O
+    models:
+      province: Province
+      city: City
+      district: District
+      user: User
+      user_detail: Detail
+      user_hobby: Hobby
+      user_educational: Educational
+
+    attributes:
+      user:
+        name: Name
+        email: Email
+        sign_in_count: Sign in Count
+        remember_created_at: Remeber Me
+        last_sign_in_ip: Last Sign in IP
+        last_sign_in_at: Last Sign in Date
+        current_sign_in_ip: Current Sign in IP
+        current_sign_in_at: Current Sign in Date
+        password: Password
+        password_confirmation: Password Confirmation
+        birthday: Birthday
+        gender: Gender
+        blood: Blood Type
+        status: Status
+        biography: Biography
+        is_hidden: Hidden
+        avatar: Avatar
+        birthplace: Birthplace
+        birthplace_province_id: Birthplace Province
+        birthplace_city_id: Birthplace City
+        birthplace_district_id: Birthplace District
+        residence: Residence
+        residence_province_id: Residence Province
+        residence_city_id: Residence City
+        residence_district_id: Residence District
+      user_detail:
+        character: Personality
+        contact_information: Contact
+        educational_level: Degree of Education
+        habit: Habit
+        habit_sleep: 
+        habit_smoke: 
+        habit_wine: 
+        marriage: Marital Status
+        profession: The Current Professional
+        somatotype: Somatotype
+      user_hobby:
+        books: Books
+        brand: Brand
+        movie: Movie
+        music: Music
+        sports: Sports
+        favorite_people: Favorite People
+        hobby: Other Hobbies
+      user_educational:
+        school_name: School Name
+        school_type: School Type
+        year_in: Year
+      user_work:
+        unit_name: Unit Name
+        time: Time
+        start_year: Start Year
+        end_year: End Year
+        start_month: Start Month
+        end_month: End Month
