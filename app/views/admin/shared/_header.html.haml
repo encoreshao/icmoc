@@ -17,6 +17,8 @@
               = link_to District.model_name.human, admin_districts_path
             = main_nav :users do
               = link_to User.model_name.human, admin_users_path
+            = main_nav :personalities do
+              = link_to Personality.model_name.human, admin_personalities_path
 
           %ul.nav.pull-right
             %li= link_to t('actions.logout'), logout_path, method: :delete

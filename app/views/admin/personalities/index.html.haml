@@ -4,20 +4,18 @@
     %small
     = link_to t('actions.new').html_safe, new_resource_path, class: 'btn'
     
-= render 'admin/shared/search', url: admin_cities_path
+= render 'admin/shared/search', url: admin_personalities_path
 
 .cities-container
   %table.table
     %tr
       %th= collection.name.safe_constantize.human_attribute_name(:name)
-      %th= collection.name.safe_constantize.human_attribute_name(:name_en)
-      %th= collection.name.safe_constantize.human_attribute_name(:name_abbr)
+      %th= collection.name.safe_constantize.human_attribute_name(:code)
       %th{class: 'span1'}
     - collection.each do |resource|
       %tr
         %td= resource.name
-        %td= resource.name_en
-        %td= resource.name_abbr
+        %td= resource.code
         %td= render partial: 'admin/shared/options', locals: { resource: resource }
 
   = paginate collection

@@ -1,0 +1,18 @@
+.page-header
+  %h3
+    = resource.class.model_name.human
+    %small
+    = link_to t('actions.back').html_safe, :back, class: 'btn btn-success'
+    = link_to t('actions.edit').html_safe, edit_resource_path, class: 'btn'
+
+
+.city-detail
+  %h3
+    %p= resource.name
+  %h5
+    %p
+      = resource.class.human_attribute_name(:name)
+      = resource.name
+    %p
+      = resource.class.human_attribute_name(:code)
+      = resource.code

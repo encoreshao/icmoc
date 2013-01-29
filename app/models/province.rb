@@ -15,4 +15,15 @@ class Province < ActiveRecord::Base
     @options ||= scoped.select('id, name').map{ |p| [p.name, p.id] }
   end
 
-end
+end# == Schema Information
+#
+# Table name: provinces
+#
+#  id         :integer(4)      not null, primary key
+#  name       :string(255)
+#  name_en    :string(255)
+#  name_abbr  :string(255)
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#
+

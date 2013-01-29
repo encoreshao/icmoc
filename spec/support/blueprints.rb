@@ -18,3 +18,7 @@ end
 UserWork.blueprint do
   # Attributes here
 end
+
+Personality.blueprint do
+  # Attributes here
+end

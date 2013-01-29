@@ -19,14 +19,14 @@
 
 
   %body
-    = render 'header'
+    = render 'admin/shared/header'
     .container{style: 'margin: 50px auto;'}
 
       .row
         .span9
           = render "messages"
           = yield
-        = render 'sidebar'
+        = render 'admin/shared/sidebar'
     
       = render 'footer'
     

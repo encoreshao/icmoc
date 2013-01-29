@@ -25,3 +25,16 @@ class District < ActiveRecord::Base
 	end
 	
 end
+# == Schema Information
+#
+# Table name: districts
+#
+#  id         :integer(4)      not null, primary key
+#  name       :string(255)
+#  city_id    :integer(4)
+#  name_en    :string(255)
+#  name_abbr  :string(255)
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#
+

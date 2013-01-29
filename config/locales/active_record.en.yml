@@ -15,6 +15,7 @@ en:
       user_detail: Detail
       user_hobby: Hobby
       user_educational: Educational
+      personality: Personality
 
     attributes:
       user:
@@ -73,3 +74,7 @@ en:
         end_year: End Year
         start_month: Start Month
         end_month: End Month
+      personality:
+        id: ID
+        name: Name
+        code: Code

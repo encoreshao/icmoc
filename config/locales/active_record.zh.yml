@@ -13,6 +13,7 @@ zh:
       district: 地区
       user: 用户
       user_detail: 详细信息
+      personality: 性格
 
     attributes:
       user:
@@ -71,3 +72,7 @@ zh:
         end_year: 结束年份
         start_month: 开始月份
         end_month: 结束月份
+      personality:
+        id: 编号
+        name: 名称
+        code: 标记

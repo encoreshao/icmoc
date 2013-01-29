@@ -10,6 +10,7 @@ Icmoc::Application.routes.draw do
     resources :provinces
     resources :cities
     resources :districts
+    resources :personalities
     resources :users do
       member do
         post 'mark_as_admin'

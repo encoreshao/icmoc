@@ -28,5 +28,17 @@ module ApplicationHelper
   def passport_options(options)
     options.collect{|a| [a[:name], a[:value].to_i] }
   end
+
+  def show_flash_message
+    msg, css_class =
+      if flash[:notice]
+      [flash[:notice], 'notice']
+    elsif flash[:alert]
+      [flash[:alert], 'alert']
+    end
+    if msg
+      content_tag :p, msg, :class => css_class
+    end
+  end
   
 end

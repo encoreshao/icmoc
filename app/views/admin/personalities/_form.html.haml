@@ -1,0 +1,8 @@
+= simple_form_for resource, url: url, html: { class: 'form-horizontal' } do |f|
+  %fieldset
+    = f.input :name, required: true
+    = f.input :code, required: false
+    
+    .control-group
+      %label
+      .controls= f.submit class: 'btn'

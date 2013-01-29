@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130129082038) do
+ActiveRecord::Schema.define(:version => 20130129084145) do
 
   create_table "articles", :force => true do |t|
     t.string   "swap_name"
@@ -69,6 +69,13 @@ ActiveRecord::Schema.define(:version => 20130129082038) do
   add_index "districts", ["name"], :name => "index_districts_on_name"
   add_index "districts", ["name_abbr"], :name => "index_districts_on_name_abbr"
   add_index "districts", ["name_en"], :name => "index_districts_on_name_en"
+
+  create_table "personalities", :force => true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "provinces", :force => true do |t|
     t.string   "name"
