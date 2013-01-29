@@ -1,9 +1,12 @@
 = simple_form_for resource, url: url, html: { class: 'form-horizontal' } do |f|
   %fieldset
-    = region_select :city, :province
-    = f.region_select :city
+    .control-group
+      = f.label :city
+      = f.region_select :city
     = f.input :name, required: true
     = f.input :name_en, required: true
     = f.input :name_abbr, required: true
     
-    = f.submit class: 'btn'
+    .control-group
+      %label
+      .controls= f.submit class: 'btn'

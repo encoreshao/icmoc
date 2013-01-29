@@ -2,11 +2,11 @@
   = simple_form_for @user, url: member_users_path, html: { class: 'form-horizontal' } do |f|
     = f.input :name, required: true
     = f.input :email, required: true
-
-    - if @user.new_record?
-      = f.input :password, required: true
-      = f.input :password_confirmation, required: true
+    = f.input :password, required: true
+    = f.input :password_confirmation, required: true
 
 
-    = f.submit class: 'btn'
+    .control-group
+      %label
+      .controls= f.submit class: 'btn'
   

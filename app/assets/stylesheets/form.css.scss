@@ -8,6 +8,8 @@ body {
         text-align: right;
       }
       .controls {
+        display: inline-block;
+        margin-left: 14px;
         select {
           width: 120px;
         }
@@ -15,12 +17,14 @@ body {
           label { 
             min-width: 10%;
             text-align: center;
+            margin: 0 10px;
           }
           input[type=radio] {
             margin-left: 0px;
           }
         }
         .checkbox {
+          padding-left: 0px;
           label {
             text-align: left;
             min-width: 5%;

@@ -18,15 +18,21 @@ Icmoc::Application.routes.draw do
     end
     root :to => 'provinces#index'
   end
-  namespace :member, path: 'setting', as: :member do
-    resources :users, path: 'profile', except: [:index, :show, :update, :edit, :destroy] do
+  namespace :member, path: 'settings', as: :member do
+    resources :users, path: 'p', except: [:index, :show, :update, :edit, :destroy] do
       collection do
-        match 'basic' => 'basic', via: [:get, :put]
-        match 'details' => 'details', via: [:get, :put]
-        match 'interests' => 'interests', via: [:get, :put]
-        match 'education' => 'education', via: [:get, :put]
-        match 'career' => 'career', via: [:get, :put]
-        match 'portrait' => 'portrait', via: [:get, :put]
+        get 'basic'
+        put 'basic'
+        get 'details'
+        put 'details'
+        get 'interests'
+        put 'interests'
+        get 'education'
+        put 'education'
+        get 'career'
+        put 'career'
+        get 'portrait'
+        put 'portrait'
       end
     end
 

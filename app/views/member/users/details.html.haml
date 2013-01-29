@@ -1,5 +1,5 @@
 .row
-  = simple_nested_form_for @user, url: member_user_path(@user), html: { class: 'form-horizontal', multipart: true } do |f|
+  = simple_nested_form_for @user, url: details_member_users_path, html: { method: :put } do |f|
     %fieldset
       - if @user.details.empty?
         = f.simple_fields_for :details, @user.details.build do |p|
@@ -33,6 +33,7 @@
 
 
     .control-group
+      %label
       .controls= f.submit class: 'btn'
 
     

@@ -1,8 +1,5 @@
-class Admin::UsersController < InheritedResources::Base
-  layout 'admin'
-
+class Admin::UsersController < Admin::BaseController
   main_nav_highlight :users
-  before_filter :admin_authenticate_user!
 
   def create
     create! { collection_path }
@@ -11,7 +8,7 @@ class Admin::UsersController < InheritedResources::Base
   def update
     update! { collection_path }
   end
-
+  
   def mark_as_admin
     user = User.find params[:id]
     user.mark_as_admin!

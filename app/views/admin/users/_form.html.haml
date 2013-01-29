@@ -6,6 +6,7 @@
     = f.input :password, required: true
     = f.input :password_confirmation, required: true
 
-
-  = f.submit class: 'btn'
+  .control-group
+    %label
+    .controls= f.submit class: 'btn'
   

@@ -2,7 +2,7 @@
   %h3
     = resource.class.model_name.human
     %small
-    = link_to t('actions.back').html_safe, collection_path, class: 'btn btn-success'
+    = link_to t('actions.back').html_safe, :back, class: 'btn btn-success'
     = link_to t('actions.edit').html_safe, edit_resource_path, class: 'btn'
 
 .user-detail

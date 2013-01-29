@@ -29,7 +29,7 @@ class UserAvatarUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-  process :scale => [200, 300]
+  process :resize_to_fill => [200, 300]
   #
   # def scale(width, height)
   #   # do something
@@ -37,7 +37,7 @@ class UserAvatarUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
-    process :scale => [58, 58]
+    process :resize_to_fill => [58, 58]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

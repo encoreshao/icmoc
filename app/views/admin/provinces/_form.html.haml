@@ -4,4 +4,6 @@
     = f.input :name_en, required: true
     = f.input :name_abbr, required: true
     
-    = f.submit class: 'btn'
+    .control-group
+      %label
+      .controls= f.submit class: 'btn'

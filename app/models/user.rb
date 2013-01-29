@@ -21,6 +21,10 @@ class User < ActiveRecord::Base
   has_many :educationals, class_name: 'UserEducational'
   has_many :hobbies, class_name: 'UserHobby'
   has_many :works, class_name: 'UserWork'
+  accepts_nested_attributes_for :details, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :educationals, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :hobbies, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :works, reject_if: :all_blank, allow_destroy: true
 
   symbolize :blood, in: [:type_a, :type_b, :type_ab, :type_o], scopes: true, methods: true, allow_blank: true
   

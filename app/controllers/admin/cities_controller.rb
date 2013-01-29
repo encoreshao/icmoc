@@ -1,7 +1,5 @@
-class Admin::CitiesController < InheritedResources::Base
+class Admin::CitiesController < Admin::BaseController
   main_nav_highlight :cities
-  before_filter :admin_authenticate_user!
-  layout 'admin'
 
   protected
     def collection

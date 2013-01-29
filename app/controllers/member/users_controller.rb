@@ -1,5 +1,6 @@
-class Member::UsersController < ApplicationController
-  layout 'member'
+# encoding: utf-8
+
+class Member::UsersController < Member::BaseController
   before_filter :instance_current_user, except: [:new, :create]
   skip_before_filter :authenticate_user!, only: [:new, :create]
 
@@ -18,9 +19,23 @@ class Member::UsersController < ApplicationController
   end
 
   def basic
+    if request.put?
+      if @user.update_attributes(params[:user])
+        redirect_to action: :basic
+      else
+        render action: :basic
+      end
+    end
   end
 
   def details
+    if request.put?
+      if @user.update_attributes (params[:user])
+        redirect_to action: :details
+      else
+        render action: :details
+      end
+    end
   end
 
   def interests
@@ -33,6 +48,13 @@ class Member::UsersController < ApplicationController
   end
 
   def portrait
+    if request.put?
+      if @user.update_attributes (params[:user])
+        redirect_to action: :portrait
+      else
+        render action: :portrait
+      end
+    end
   end
 
   private
