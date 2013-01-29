@@ -11,20 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130128151029) do
+ActiveRecord::Schema.define(:version => 20130129082038) do
 
   create_table "articles", :force => true do |t|
     t.string   "swap_name"
+    t.string   "wish_name"
     t.string   "code"
+    t.float    "price"
+    t.string   "qq"
+    t.string   "phone"
+    t.text     "description"
+    t.integer  "view_count"
     t.integer  "province_id"
     t.integer  "city_id"
     t.integer  "district_id"
-    t.float    "price"
-    t.text     "description"
-    t.string   "qq"
-    t.string   "phone"
-    t.integer  "view_count"
-    t.string   "wish_name"
+    t.integer  "user_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -34,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20130128151029) do
   add_index "articles", ["district_id"], :name => "index_articles_on_district_id"
   add_index "articles", ["province_id"], :name => "index_articles_on_province_id"
   add_index "articles", ["swap_name"], :name => "index_articles_on_swap_name"
+  add_index "articles", ["user_id"], :name => "index_articles_on_user_id"
   add_index "articles", ["wish_name"], :name => "index_articles_on_wish_name"
 
   create_table "cities", :force => true do |t|
@@ -81,14 +83,14 @@ ActiveRecord::Schema.define(:version => 20130128151029) do
   add_index "provinces", ["name_en"], :name => "index_provinces_on_name_en"
 
   create_table "user_details", :force => true do |t|
-    t.string   "somatotype"
-    t.string   "marriage"
-    t.string   "habit_smoke"
-    t.string   "habit_wine"
-    t.string   "habit_sleep"
+    t.integer  "somatotype"
+    t.integer  "marriage"
+    t.integer  "habit_smoke"
+    t.integer  "habit_wine"
+    t.integer  "habit_sleep"
     t.string   "character"
-    t.string   "educational_level"
-    t.string   "profession"
+    t.integer  "educational_level"
+    t.integer  "profession"
     t.string   "contact_information"
     t.integer  "user_id"
     t.datetime "created_at",          :null => false
@@ -101,7 +103,7 @@ ActiveRecord::Schema.define(:version => 20130128151029) do
   add_index "user_details", ["user_id"], :name => "index_user_details_on_user_id"
 
   create_table "user_educationals", :force => true do |t|
-    t.string   "school_type"
+    t.integer  "school_type"
     t.string   "school_name"
     t.integer  "year_in"
     t.integer  "user_id"

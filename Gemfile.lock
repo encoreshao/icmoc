@@ -1,5 +1,6 @@
-PATH
-  remote: /Users/encore/Encore/github/china_regions
+GIT
+  remote: git@github.com:encoreshao/china_regions.git
+  revision: 704eb83cf3d30b2eb901198720abe12e6cbcdf26
   specs:
     china_regions (0.0.5)
       jquery-rails

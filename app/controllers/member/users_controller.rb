@@ -30,7 +30,7 @@ class Member::UsersController < Member::BaseController
 
   def details
     if request.put?
-      if @user.update_attributes (params[:user])
+      if @user.update_attributes params[:user]
         redirect_to action: :details
       else
         render action: :details
@@ -39,6 +39,13 @@ class Member::UsersController < Member::BaseController
   end
 
   def interests
+    if request.put?
+      if @user.update_attributes(params[:user])
+        redirect_to action: :interests
+      else
+        render action: :interests
+      end
+    end
   end
 
   def education

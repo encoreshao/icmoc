@@ -1,14 +1,14 @@
 class CreateUserDetails < ActiveRecord::Migration
   def change
     create_table :user_details do |t|
-      t.string :somatotype
-      t.string :marriage
-      t.string :habit_smoke
-      t.string :habit_wine
-      t.string :habit_sleep
+      t.integer :somatotype
+      t.integer :marriage
+      t.integer :habit_smoke
+      t.integer :habit_wine
+      t.integer :habit_sleep
       t.string :character
-      t.string :educational_level
-      t.string :profession
+      t.integer :educational_level
+      t.integer :profession
       t.string :contact_information
       t.references :user
 

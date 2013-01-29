@@ -9,7 +9,8 @@ class User < ActiveRecord::Base
                   :last_sign_in_at, :last_sign_in_ip, :current_sign_in_at, :current_sign_in_ip, :sign_in_count, 
                   :birthday, :gender, :status, :biography, :blood, :is_hidden, :avatar, 
                   :birthplace_province_id, :birthplace_city_id, :birthplace_district_id,
-                  :residence_province_id, :residence_city_id, :residence_district_id
+                  :residence_province_id, :residence_city_id, :residence_district_id, 
+                  :detail_attributes, :hobby_attributes
 
   mount_uploader :avatar, UserAvatarUploader
 
@@ -17,13 +18,14 @@ class User < ActiveRecord::Base
   validates :password, presence: true, confirmation: true, length: { in: 6..20 }, on: :create
   validates :email, presence: true, uniqueness:  true, format: EMAIL_REGEX
   
-  has_many :details, class_name: 'UserDetail'
+  has_one :detail, class_name: 'UserDetail'
+  has_one :hobby, class_name: 'UserHobby'
   has_many :educationals, class_name: 'UserEducational'
-  has_many :hobbies, class_name: 'UserHobby'
   has_many :works, class_name: 'UserWork'
-  accepts_nested_attributes_for :details, reject_if: :all_blank, allow_destroy: true
+  
+  accepts_nested_attributes_for :detail, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :hobby, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :educationals, reject_if: :all_blank, allow_destroy: true
-  accepts_nested_attributes_for :hobbies, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :works, reject_if: :all_blank, allow_destroy: true
 
   symbolize :blood, in: [:type_a, :type_b, :type_ab, :type_o], scopes: true, methods: true, allow_blank: true

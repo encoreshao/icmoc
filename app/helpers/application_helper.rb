@@ -26,7 +26,7 @@ module ApplicationHelper
   end
 
   def passport_options(options)
-    options.collect{|a| [a[:name], a[:value]] }
+    options.collect{|a| [a[:name], a[:value].to_i] }
   end
   
 end

@@ -1,7 +1,7 @@
 class CreateUserEducationals < ActiveRecord::Migration
   def change
     create_table :user_educationals do |t|
-      t.string :school_type
+      t.integer :school_type
       t.string :school_name
       t.integer :year_in
       t.references :user

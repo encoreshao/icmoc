@@ -7,7 +7,7 @@ gem 'rails', '3.2.11'
 
 gem 'mysql2'
 # gem 'china_regions'
-gem 'china_regions',    path: '/Users/encore/Encore/github/china_regions'
+gem 'china_regions',    git: 'git@github.com:encoreshao/china_regions.git'
 gem 'inherited_resources'
 gem 'simple_form'
 gem 'nested_form'

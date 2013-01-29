@@ -1,6 +1,6 @@
 .row
   = simple_form_for @user, url: portrait_member_users_path, html: { method: :put } do |f|
-    - if !@user.new_record? && @user.avatar
+    - unless @user.avatar.blank?
       .control-group
         %label
         .controls

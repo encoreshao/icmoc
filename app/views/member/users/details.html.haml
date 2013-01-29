@@ -1,35 +1,20 @@
 .row
   = simple_nested_form_for @user, url: details_member_users_path, html: { method: :put } do |f|
     %fieldset
-      - if @user.details.empty?
-        = f.simple_fields_for :details, @user.details.build do |p|
-          = p.input :somatotype, collection: passport_options(DEFAULTS[:passport_figure]), selected: '0'
-          = p.input :character, :as => :check_boxes, collection: passport_options(DEFAULTS[:passport_character])
-          = p.input :educational_level, collection: passport_options(DEFAULTS[:passport_education]), selected: '0'
-          .control-group
-            = p.label :habit
-            .controls
-              = p.select :habit_sleep, options_for_select(passport_options(DEFAULTS[:passport_rest]))
-              = p.select :habit_smoke, options_for_select(passport_options(DEFAULTS[:passport_smoke]))
-              = p.select :habit_wine, options_for_select(passport_options(DEFAULTS[:passport_drink]))
-          = p.input :marriage, collection: passport_options(DEFAULTS[:passport_marriage]), selected: '0'
-          = p.input :profession, collection: passport_options(DEFAULTS[:passport_trade]), selected: '0'
-          = p.input :contact_information
-      - else
-        - @user.details.each do |detail|
-          = f.simple_fields_for :details, detail do |p|
-            = p.input :somatotype, collection: passport_options(DEFAULTS[:passport_figure]), selected: '0'
-            = p.input :character, :as => :check_boxes, collection: passport_options(DEFAULTS[:passport_character])
-            = p.input :educational_level, collection: passport_options(DEFAULTS[:passport_education]), selected: '0'
-            .control-group
-              = p.label :habit
-              .controls
-                = p.select :habit_sleep, options_for_select(passport_options(DEFAULTS[:passport_rest]))
-                = p.select :habit_smoke, options_for_select(passport_options(DEFAULTS[:passport_smoke]))
-                = p.select :habit_wine, options_for_select(passport_options(DEFAULTS[:passport_drink]))
-            = p.input :marriage, collection: passport_options(DEFAULTS[:passport_marriage]), selected: '0'
-            = p.input :profession, collection: passport_options(DEFAULTS[:passport_trade]), selected: '0'
-            = p.input :contact_information
+      = f.simple_fields_for :detail, (@user.detail || UserDetail.new) do |p|
+        = p.input :somatotype, collection: passport_options(DEFAULTS[:passport_figure]), prompt: false
+        = @user.detail.character
+        = p.input :character, as: :check_boxes, collection: passport_options(DEFAULTS[:passport_character])
+        = p.input :educational_level, collection: passport_options(DEFAULTS[:passport_education]), prompt: false
+        .control-group
+          = p.label :habit
+          .controls
+            = p.select :habit_sleep, options_for_select(passport_options(DEFAULTS[:passport_rest]))
+            = p.select :habit_smoke, options_for_select(passport_options(DEFAULTS[:passport_smoke]))
+            = p.select :habit_wine, options_for_select(passport_options(DEFAULTS[:passport_drink]))
+        = p.input :marriage, collection: passport_options(DEFAULTS[:passport_marriage]), prompt: false
+        = p.input :profession, collection: passport_options(DEFAULTS[:passport_trade]), prompt: false
+        = p.input :contact_information
 
 
     .control-group

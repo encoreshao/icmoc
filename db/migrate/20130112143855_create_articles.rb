@@ -2,16 +2,17 @@ class CreateArticles < ActiveRecord::Migration
   def change
     create_table :articles do |t|
       t.string :swap_name
+      t.string :wish_name
       t.string :code
-      t.integer :province_id
-      t.integer :city_id
-      t.integer :district_id
       t.float :price
-      t.text :description
       t.string :qq
       t.string :phone
+      t.text :description
       t.integer :view_count
-      t.string :wish_name
+      t.references :province
+      t.references :city
+      t.references :district
+      t.references :user
 
       t.timestamps
     end
@@ -22,5 +23,6 @@ class CreateArticles < ActiveRecord::Migration
     add_index :articles, :city_id
     add_index :articles, :district_id
     add_index :articles, :code
+    add_index :articles, :user_id
   end
 end
