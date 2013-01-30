@@ -16,6 +16,9 @@ zh:
     sign_in: Sign in
     sign_up: Sign up
     logout: logout
+  select:
+    man: Man
+    famale: Famale
 
   views:
     sidebar: 

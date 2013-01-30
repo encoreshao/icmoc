@@ -29,6 +29,7 @@ class Member::UsersController < Member::BaseController
   end
 
   def details
+    @detail = UserDetail.new if @user.detail.blank?
     if request.put?
       if @user.update_attributes params[:user]
         redirect_to action: :details
@@ -39,6 +40,7 @@ class Member::UsersController < Member::BaseController
   end
 
   def interests
+    @hobby = UserHobby.new if @user.hobby.blank?
     if request.put?
       if @user.update_attributes(params[:user])
         redirect_to action: :interests
@@ -49,9 +51,25 @@ class Member::UsersController < Member::BaseController
   end
 
   def education
+    @work = UserEducational.new
+    if request.put?
+      if @user.update_attributes(params[:user])
+        redirect_to action: :education
+      else
+        render action: :education
+      end
+    end
   end
 
   def career
+    @work = UserWork.new
+    if request.put?
+      if @user.update_attributes(params[:user])
+        redirect_to action: :career
+      else
+        render action: :career
+      end
+    end
   end
 
   def portrait

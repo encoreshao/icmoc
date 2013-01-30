@@ -2,7 +2,7 @@
   = simple_nested_form_for @user, url: career_member_users_path, html: { method: :put } do |f|
     %fieldset
       - if @user.works.empty?
-        = f.simple_fields_for :works, @user.works.build do |p|
+        = f.simple_fields_for :works, @work do |p|
           = p.input :unit_name
           = p.input :start_year, as: :date, order: [:year], start_year: 1900, end_year: Date.today.year
           = p.input :start_month, as: :date, order: [:month], use_month_numbers: true

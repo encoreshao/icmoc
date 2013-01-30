@@ -16,6 +16,10 @@ zh:
     logout: 退出
     sign_in: 登录
     sign_up: 注册
+  select:
+    man: 男
+    famale: 女
+
 
   views:
     sidebar: 

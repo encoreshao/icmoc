@@ -1,7 +1,7 @@
 .row
   = simple_nested_form_for @user, url: interests_member_users_path, html: { method: :put } do |f|
     %fieldset
-      = f.simple_fields_for :hobby, (@user.hobby || UserHobby.new) do |p|
+      = f.simple_fields_for :hobby, (@user.hobby || @hobby) do |p|
         = p.input :books, placeholder: 'Ruby,Java,Linux...'
         = p.input :brand, placeholder: 'Nike,AnTa...'
         = p.input :favorite_people, placeholder: 'Tom,Encore,Gimi Shao...'
