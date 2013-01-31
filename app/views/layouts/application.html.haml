@@ -27,7 +27,12 @@
               %li= link_to user.name, member_root_path
               %li= link_to t('actions.logout'), logout_path, method: :delete
             - else
-              %li= link_to t('actions.sign_in'), new_session_path
+              - if params[:controller] == "session" && params[:action] == "new"
+                %li= link_to t('actions.sign_in'), new_session_path
+              - else
+                %li= link_to t('actions.sign_in'), new_session_path
+                %li= link_to t('actions.sign_up'), sign_up_path
+                
 
     .container{style: 'margin: 50px auto;'}
       .row

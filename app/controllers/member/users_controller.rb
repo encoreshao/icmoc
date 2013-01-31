@@ -1,22 +1,8 @@
 # encoding: utf-8
 
 class Member::UsersController < Member::BaseController
-  before_filter :instance_current_user, except: [:new, :create]
-  skip_before_filter :authenticate_user!, only: [:new, :create]
+  before_filter :instance_current_user
 
-  def new
-    @user = User.new
-  end
-
-  def create
-    @user = User.new(params[:user])
-    if @user.save
-      session[:user_id] = @user.id
-      redirect_to member_root_path
-    else
-      render action: :new
-    end
-  end
 
   def basic
     if request.put?

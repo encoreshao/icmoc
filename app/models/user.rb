@@ -14,9 +14,9 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, UserAvatarUploader
 
-  validates :name,  presence: true, uniqueness:  true, length: { in: 5..20 }
+  validates :name, presence: false, uniqueness: { case_sensitive: false }, length: { in: 5..20 }, :if => Proc.new { |c| not c.name.blank? }
   validates :password, presence: true, confirmation: true, length: { in: 6..20 }, on: :create
-  validates :email, presence: true, uniqueness:  true, format: EMAIL_REGEX
+  validates :email, presence: true, uniqueness: { case_sensitive: false }, format: EMAIL_REGEX
   
   has_one :detail, class_name: 'UserDetail'
   has_one :hobby, class_name: 'UserHobby'

@@ -1,6 +1,8 @@
 Icmoc::Application.routes.draw do
   
   match '/session' => "session#index",  as: :new_session, via: [:get]
+  match '/session/new' => "session#new",    as: :sign_up, via: [:get]
+  match '/session/create' => "session#create",    as: :create_session, via: [:post]
   match '/login' => "session#login",    as: :session, via: [:post]
   match '/logout' => "session#logout",    as: :logout, via: [:delete]
 
@@ -20,7 +22,7 @@ Icmoc::Application.routes.draw do
     root :to => 'provinces#index'
   end
   namespace :member, path: 'settings', as: :member do
-    resources :users, path: 'p', except: [:index, :show, :update, :edit, :destroy] do
+    resources :users, path: 'p', only: [] do
       collection do
         get 'basic'
         put 'basic'
