@@ -1,6 +1,13 @@
 body {
   width: 100%;
   form {
+    table {
+      td {
+        select {
+          width: 70px;
+        }
+      }
+    }
     .control-group {
       label {
         float: left;

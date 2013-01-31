@@ -1,24 +1,30 @@
 .row
   = simple_nested_form_for @user, url: career_member_users_path, html: { method: :put } do |f|
     %fieldset
-      - if @user.works.empty?
-        = f.simple_fields_for :works, @work do |p|
-          = p.input :unit_name
-          = p.input :start_year, as: :date, order: [:year], start_year: 1900, end_year: Date.today.year
-          = p.input :start_month, as: :date, order: [:month], use_month_numbers: true
-          = p.input :end_year, as: :date, order: [:year], start_year: 1900, end_year: Date.today.year
-          = p.input :end_month, as: :date, order: [:month], use_month_numbers: true
-      - else
+      = t('actions.new')
+      %table.table.table-striped
+        %tr
+          %td= UserWork.human_attribute_name(:unit_name)
+          %td= UserWork.human_attribute_name(:time)
+          %td
         - @user.works.each do |work|
-          = f.simple_fields_for :works, work do |p|
-            = p.input :unit_name
-            = p.input :start_year, as: :date, order: [:year], start_year: 1900, end_year: Date.today.year
-            = p.input :start_month, as: :date, order: [:month]
-            = p.input :end_year, as: :date, order: [:year], start_year: 1900, end_year: Date.today.year
-            = p.input :end_month, as: :date, order: [:month]
-
-    .control-group
-      %label
-      .controls= f.submit class: 'btn'
-
+          %tr
+            = f.simple_fields_for :work, work do |p|
+              %td= work.unit_name
+              %td
+                = work.start_time.year
+                = '.'.html_safe
+                = work.start_time.month
+                = '--'.html_safe
+                = work.end_time.year
+                = '.'.html_safe
+                = work.end_time.month
+              %td= link_to t('actions.destroy'), '', data: {value: work.indexing}
+        %tr
+          = f.simple_fields_for :works, @user.works.build do |p|
+            %td= p.text_field :unit_name
+            %td
+              = p.date_select :start_time, order: [:year, :month], start_year: 1900, end_year: Date.today.year, use_month_numbers: true
+              = p.date_select :end_time, order: [:year, :month], start_year: 1900, end_year: Date.today.year, use_month_numbers: true
+            %td= f.submit t('actions.save'), class: 'btn btn-primary'
     

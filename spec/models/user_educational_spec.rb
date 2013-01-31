@@ -9,8 +9,9 @@ end
 #
 #  id          :integer(4)      not null, primary key
 #  school_type :integer(4)
+#  indexing    :integer(4)
 #  school_name :string(255)
-#  year_in     :integer(4)
+#  year_in     :datetime
 #  user_id     :integer(4)
 #  created_at  :datetime        not null
 #  updated_at  :datetime        not null

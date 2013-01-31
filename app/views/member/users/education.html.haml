@@ -1,20 +1,25 @@
 .row
+  %h3= UserEducational.model_name.human
   = simple_nested_form_for @user, url: education_member_users_path, html: { method: :put } do |f|
     %fieldset
-      - if @user.educationals.empty?
-        = f.simple_fields_for :educationals, @user.educationals.build do |p|
-          = p.input :school_type, collection: passport_options(DEFAULTS[:educationals]), selected: '0'
-          = p.input :school_name
-          = p.input :year_in, as: :date, order: [:year], start_year: 1900, end_year: Date.today.year
-      - else
+      %table.table.table-striped
+        %tr
+          %td= UserEducational.human_attribute_name(:school_type)
+          %td= UserEducational.human_attribute_name(:school_name)
+          %td= UserEducational.human_attribute_name(:year_in)
+          %td
         - @user.educationals.each do |educational|
-          = f.simple_fields_for :educationals, educational do |p|
-            = p.input :school_type, collection: passport_options(DEFAULTS[:educationals]), selected: '0'
-            = p.input :school_name
-            = p.input :year_in, as: :date
-
-    .control-group
-      %label
-      .controls= f.submit class: 'btn'
+          %tr
+            = f.simple_fields_for :educationals, educational do |p|
+              %td= DEFAULTS[:educationals][educational.school_type][:name]
+              %td= educational.school_name
+              %td= educational.year_in.year
+              %td= link_to t('actions.destroy'), '', data: {value: educational.indexing, type: educational.school_type}
+        %tr
+          = f.simple_fields_for :educationals, @user.educationals.build do |p|
+            %td= p.select :school_type, passport_options(DEFAULTS[:educationals].reverse)
+            %td= p.text_field :school_name
+            %td= p.date_select :year_in, start_year: 1900, end_year: Date.today.year, order: [:year]
+            %td= f.submit t('actions.save'), class: 'btn btn-primary'
 
     

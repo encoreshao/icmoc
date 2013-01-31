@@ -51,7 +51,6 @@ class Member::UsersController < Member::BaseController
   end
 
   def education
-    @work = UserEducational.new
     if request.put?
       if @user.update_attributes(params[:user])
         redirect_to action: :education
@@ -62,7 +61,6 @@ class Member::UsersController < Member::BaseController
   end
 
   def career
-    @work = UserWork.new
     if request.put?
       if @user.update_attributes(params[:user])
         redirect_to action: :career

@@ -3,8 +3,7 @@
     %fieldset
       = f.simple_fields_for :detail, (@user.detail || @detail) do |p|
         = p.input :somatotype, collection: passport_options(DEFAULTS[:passport_figure]), prompt: false
-        = @user.detail && @user.detail.character
-        = p.input :character, as: :check_boxes, collection: passport_options(DEFAULTS[:passport_character])
+        =# p.input :character, as: :check_boxes, collection: passport_options(DEFAULTS[:passport_character])
         = p.input :educational_level, collection: passport_options(DEFAULTS[:passport_education]), prompt: false
         .control-group
           = p.label :habit
@@ -19,4 +18,4 @@
 
     .control-group
       %label
-      .controls= f.submit class: 'btn'
+      .controls= f.submit t('actions.save'), class: 'btn btn-primary'

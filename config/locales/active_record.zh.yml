@@ -11,8 +11,11 @@ zh:
       province: 省份
       city: 城市
       district: 地区
-      user: 用户
+      user: 个人资料
       user_detail: 详细信息
+      user_educational: 教育背景
+      user_hobby: 兴趣爱好
+      user_work: 工作经历
       personality: 性格
 
     attributes:

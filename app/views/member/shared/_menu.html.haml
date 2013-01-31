@@ -3,15 +3,15 @@
     .navbar-inner
       %ul.nav.pull-left
         = sec_nav :basic do
-          = link_to t('member.header.basic'), basic_member_users_path
+          = link_to User.model_name.human, basic_member_users_path
         = sec_nav :details do
-          = link_to t('member.header.details'), details_member_users_path
+          = link_to UserDetail.model_name.human, details_member_users_path
         = sec_nav :interests do
-          = link_to t('member.header.interests'), interests_member_users_path
+          = link_to UserHobby.model_name.human, interests_member_users_path
         = sec_nav :education do
-          = link_to t('member.header.education'), education_member_users_path
+          = link_to UserEducational.model_name.human, education_member_users_path
         = sec_nav :career do
-          = link_to t('member.header.career'), career_member_users_path
+          = link_to UserWork.model_name.human, career_member_users_path
         = sec_nav :portrait do
           = link_to t('member.header.portrait'), portrait_member_users_path
         %li.divider-vertical

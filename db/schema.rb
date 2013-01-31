@@ -111,16 +111,20 @@ ActiveRecord::Schema.define(:version => 20130130000910) do
 
   create_table "user_educationals", :force => true do |t|
     t.integer  "school_type"
+    t.integer  "indexing"
     t.string   "school_name"
-    t.integer  "year_in"
+    t.datetime "year_in"
     t.integer  "user_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
+  add_index "user_educationals", ["indexing"], :name => "index_user_educationals_on_indexing"
   add_index "user_educationals", ["school_name"], :name => "index_user_educationals_on_school_name"
+  add_index "user_educationals", ["school_type", "indexing"], :name => "index_user_educationals_on_school_type_and_indexing"
   add_index "user_educationals", ["school_type"], :name => "index_user_educationals_on_school_type"
   add_index "user_educationals", ["user_id"], :name => "index_user_educationals_on_user_id"
+  add_index "user_educationals", ["year_in"], :name => "index_user_educationals_on_year_in"
 
   create_table "user_hobbies", :force => true do |t|
     t.string   "books"
@@ -139,15 +143,16 @@ ActiveRecord::Schema.define(:version => 20130130000910) do
 
   create_table "user_works", :force => true do |t|
     t.string   "unit_name"
-    t.integer  "start_year"
-    t.integer  "start_month"
-    t.integer  "end_year"
-    t.integer  "end_month"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "indexing"
     t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
+  add_index "user_works", ["end_time"], :name => "index_user_works_on_end_time"
+  add_index "user_works", ["start_time"], :name => "index_user_works_on_start_time"
   add_index "user_works", ["unit_name"], :name => "index_user_works_on_unit_name"
   add_index "user_works", ["user_id"], :name => "index_user_works_on_user_id"
 

@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
                   :birthday, :gender, :status, :biography, :blood, :is_hidden, :avatar, 
                   :birthplace_province_id, :birthplace_city_id, :birthplace_district_id,
                   :residence_province_id, :residence_city_id, :residence_district_id, 
-                  :detail_attributes, :hobby_attributes, :works_attributes
+                  :detail_attributes, :hobby_attributes, :works_attributes, :educationals_attributes
 
   mount_uploader :avatar, UserAvatarUploader
 
