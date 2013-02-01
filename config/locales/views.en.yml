@@ -24,6 +24,8 @@ zh:
     sidebar: 
       title: Sidebar
     header:
+    from: from
+    to: TO
     pagination:
       first: "Page"
       last: "End"

@@ -25,6 +25,8 @@ zh:
     sidebar: 
       title: 导航
     header:
+    from: 从
+    to: 至
     pagination:
       first: "首页"
       last: "末页"
