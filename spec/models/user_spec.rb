@@ -20,10 +20,10 @@ end
 #  last_sign_in_ip        :string(255)
 #  avatar                 :string(255)
 #  birthday               :datetime
-#  gender                 :boolean(1)      default(FALSE)
+#  gender                 :boolean(1)      default(TRUE)
 #  blood                  :string(255)
 #  status                 :string(255)
-#  is_hidden              :boolean(1)      default(FALSE)
+#  is_active              :boolean(1)      default(FALSE)
 #  biography              :string(255)
 #  birthplace_province_id :integer(4)
 #  birthplace_city_id     :integer(4)
@@ -31,6 +31,7 @@ end
 #  residence_province_id  :integer(4)
 #  residence_city_id      :integer(4)
 #  residence_district_id  :integer(4)
+#  agree_terms            :boolean(1)      default(FALSE)
 #  created_at             :datetime        not null
 #  updated_at             :datetime        not null
 #

@@ -6,19 +6,20 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def update
-    update! { collection_path }
-  end
-  
-  def mark_as_admin
-    user = User.find params[:id]
-    user.mark_as_admin!
-    redirect_to request.fullpath
-  end
+    if params.key?(:event)
+      resource.send("#{params[:event]}!")
 
-  def mark_as_user
-    user = User.find params[:id]
-    user.mark_as_user!
-    redirect_to request.fullpath
+      redirect_to :back, notice: 'Operation Success'
+    else
+      resource.skip_password = true if params[:user][:password].blank?
+
+      update! do |success, failure|
+        success.html
+        failure.html {
+          render :edit
+        }
+      end
+    end
   end
   
   protected

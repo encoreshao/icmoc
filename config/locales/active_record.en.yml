@@ -11,13 +11,15 @@ en:
       province: Province
       city: City
       district: District
-      user: User Information
+      user: User
       user_detail: Detail
       user_hobby: Hobby
       user_educational: Educational
       user_hobby: Hobbies
       user_work: Works
       personality: Personality
+      category: Category
+      user_prompt_problem: Problem
 
     attributes:
       user:
@@ -36,7 +38,7 @@ en:
         blood: Blood Type
         status: Status
         biography: Biography
-        is_hidden: Hidden
+        is_active: Active
         avatar: Avatar
         birthplace: Birthplace
         birthplace_province_id: Birthplace Province
@@ -46,6 +48,9 @@ en:
         residence_province_id: Residence Province
         residence_city_id: Residence City
         residence_district_id: Residence District
+        prompt_problem: Problem
+        prompt_answer: Answer
+        terms: Terms
       user_detail:
         character: Personality
         contact_information: Contact
@@ -80,3 +85,12 @@ en:
         id: ID
         name: Name
         code: Code
+      category:
+        name: Name
+        name_en: English
+        code: Code
+        slug: Slug
+        parent_id: Parent
+      user_prompt_problem:
+        problem: Problem
+        answer: Answer

@@ -4,13 +4,14 @@ class User < ActiveRecord::Base
   include Concerns::HasScope
 
   EMAIL_REGEX = /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/
-  attr_accessor :skip_password, :password, :password_confirmation
+  attr_accessor :skip_password, :password, :password_confirmation, :terms
   attr_accessible :name, :email, :remember_created_at, :password, :skip_password, :password_confirmation, 
                   :last_sign_in_at, :last_sign_in_ip, :current_sign_in_at, :current_sign_in_ip, :sign_in_count, 
-                  :birthday, :gender, :status, :biography, :blood, :is_hidden, :avatar, 
+                  :birthday, :gender, :status, :biography, :blood, :is_active, :avatar, 
                   :birthplace_province_id, :birthplace_city_id, :birthplace_district_id,
                   :residence_province_id, :residence_city_id, :residence_district_id, 
-                  :detail_attributes, :hobby_attributes, :works_attributes, :educationals_attributes
+                  :detail_attributes, :hobby_attributes, :works_attributes, :educationals_attributes, :problems_attributes,
+                  :agree_terms, :terms
 
   mount_uploader :avatar, UserAvatarUploader
 
@@ -22,11 +23,13 @@ class User < ActiveRecord::Base
   has_one :hobby, class_name: 'UserHobby'
   has_many :educationals, class_name: 'UserEducational'
   has_many :works, class_name: 'UserWork'
+  has_many :problems, class_name: 'UserPromptProblem'
   
   accepts_nested_attributes_for :detail, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :hobby, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :educationals, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :works, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :problems, reject_if: :all_blank, allow_destroy: true
 
   symbolize :blood, in: [:type_a, :type_b, :type_ab, :type_o], scopes: true, methods: true, allow_blank: true
   
@@ -83,10 +86,10 @@ end
 #  last_sign_in_ip        :string(255)
 #  avatar                 :string(255)
 #  birthday               :datetime
-#  gender                 :boolean(1)      default(FALSE)
+#  gender                 :boolean(1)      default(TRUE)
 #  blood                  :string(255)
 #  status                 :string(255)
-#  is_hidden              :boolean(1)      default(FALSE)
+#  is_active              :boolean(1)      default(FALSE)
 #  biography              :string(255)
 #  birthplace_province_id :integer(4)
 #  birthplace_city_id     :integer(4)
@@ -94,6 +97,7 @@ end
 #  residence_province_id  :integer(4)
 #  residence_city_id      :integer(4)
 #  residence_district_id  :integer(4)
+#  agree_terms            :boolean(1)      default(FALSE)
 #  created_at             :datetime        not null
 #  updated_at             :datetime        not null
 #

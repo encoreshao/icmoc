@@ -1,11 +1,22 @@
-.row
+#session.span9
   = simple_form_for @user, url: create_session_path, html: { class: 'form-horizontal' } do |f|
+    = f.input :name, required: true 
     = f.input :email, required: true
     = f.input :password, required: true
     = f.input :password_confirmation, required: true
 
+    = f.simple_fields_for :problems, @problem do |p|
+      = p.input :problem, required: true
+      = p.input :answer, required: true
+
+    .control-group
+      = f.label :terms, required: true
+      .controls
+        = f.text_area :terms, size: '10x5', value: terms_text
 
     .control-group
       %label
-      .controls= f.submit t('actions.save'), class: 'btn btn-primary'
+      .controls
+        = f.submit t('actions.save'), class: 'btn btn-primary'
+        = submit_tag t('actions.reset'), type: :reset, class: "btn btn-danger"
   

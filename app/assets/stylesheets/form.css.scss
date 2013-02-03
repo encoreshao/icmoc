@@ -1,5 +1,12 @@
 body {
   width: 100%;
+  #session {
+    form {
+      input[type=text], input[type=password], input[type=email], textarea{ 
+        width: 400px; 
+      }
+    }
+  }
   form {
     table {
       td {
@@ -19,6 +26,7 @@ body {
         margin-left: 14px;
         select {
           width: 120px;
+          &.fixed-width { width: 220px; }
         }
         .radio {
           label { 

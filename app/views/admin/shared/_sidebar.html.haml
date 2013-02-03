@@ -4,13 +4,4 @@
       %h3= t('views.sidebar.title')
       %ul.nav.nav-list
         %li.nav-header= t('views.sidebar.title')
-        = main_nav :provinces do
-          = link_to Province.model_name.human, admin_provinces_path
-        = main_nav :cities do
-          = link_to City.model_name.human, admin_cities_path
-        = main_nav :districts do
-          = link_to District.model_name.human, admin_districts_path
-        = main_nav :users do
-          = link_to User.model_name.human, admin_users_path
-        = main_nav :personalities do
-          = link_to Personality.model_name.human, admin_personalities_path
+        = render 'admin/shared/menu_items'

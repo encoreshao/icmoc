@@ -5,9 +5,9 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email, :null => false, :default => ""
       t.string :encrypted_password, :null => false, :default => ""
 
-      t.boolean   :is_admin, default: false
+      t.boolean   :is_admin,        default: false
       t.datetime  :remember_created_at
-      t.integer   :sign_in_count, default: 0
+      t.integer   :sign_in_count,   default: 0
       t.datetime  :current_sign_in_at
       t.datetime  :last_sign_in_at
       t.string    :current_sign_in_ip
@@ -15,10 +15,10 @@ class CreateUsers < ActiveRecord::Migration
 
       t.string    :avatar
       t.datetime  :birthday
-      t.boolean   :gender, default: false
+      t.boolean   :gender,    default: true
       t.string    :blood
       t.string    :status
-      t.boolean   :is_hidden, default: false
+      t.boolean   :is_active, default: false
       t.string    :biography
       # birthplace information
       t.integer   :birthplace_province_id
@@ -28,6 +28,8 @@ class CreateUsers < ActiveRecord::Migration
       t.integer   :residence_province_id
       t.integer   :residence_city_id
       t.integer   :residence_district_id
+
+      t.boolean   :agree_terms, default: false
 
       t.timestamps
     end

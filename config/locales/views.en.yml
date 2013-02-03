@@ -1,12 +1,14 @@
 zh:
   title: ICMOC
   actions:
+    admin: Admin
     search: Search
     new: New
     edit: Edit
     update: Update
     create: Create
     save: Save
+    reset: Reset
     back: Back
     options: Options
     show: Show

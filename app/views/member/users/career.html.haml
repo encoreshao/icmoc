@@ -20,6 +20,7 @@
                 = '.'.html_safe
                 = work.end_time.month
               %td= link_to t('actions.destroy'), '', data: {value: work.indexing}
+              
         %tr
           = f.simple_fields_for :works, @user.works.build do |p|
             %td= p.text_field :unit_name

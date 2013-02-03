@@ -6,13 +6,15 @@
     = link_to t('actions.edit').html_safe, edit_resource_path, class: 'btn'
 
 
-.personality-detail
-  %h3
-    %p= resource.name
+.category-detail
+  %h3= resource.parent && resource.parent.name
   %h5
     %p
       = resource.class.human_attribute_name(:name)
       = resource.name
     %p
-      = resource.class.human_attribute_name(:code)
-      = resource.code
+      = resource.class.human_attribute_name(:name_en)
+      = resource.name_en
+    %p
+      = resource.class.human_attribute_name(:slug)
+      = resource.slug

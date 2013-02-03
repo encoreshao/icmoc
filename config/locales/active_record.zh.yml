@@ -11,12 +11,14 @@ zh:
       province: 省份
       city: 城市
       district: 地区
-      user: 个人资料
+      user: 用户
       user_detail: 详细信息
       user_educational: 教育背景
       user_hobby: 兴趣爱好
       user_work: 工作经历
       personality: 性格
+      category: 类别
+      user_prompt_problem: 提示问题
 
     attributes:
       user:
@@ -35,7 +37,7 @@ zh:
         blood: 血型
         status: 状态
         biography: 个人简介
-        is_hidden: 是否删除
+        is_active: 是否有效
         avatar: 头像
         birthplace: 出生地
         birthplace_province_id: 出生地省份
@@ -45,6 +47,7 @@ zh:
         residence_province_id: 居住地省份
         residence_city_id: 居住地城市
         residence_district_id: 居住地地区
+        terms: 协议条款
       user_detail:
         character: 性格
         contact_information: 联系方式 
@@ -79,3 +82,12 @@ zh:
         id: 编号
         name: 名称
         code: 标记
+      category:
+        name: 名称
+        name_en: 英文名称
+        code: 编号
+        slug: 标记
+        parent_id: 父节点
+      user_prompt_problem:
+        problem: 提示问题
+        answer: 提示答案

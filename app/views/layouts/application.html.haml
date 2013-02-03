@@ -19,25 +19,11 @@
 
 
   %body
-    .navbar
-      .navbar-inner
-        .container
-          %ul.nav.pull-right
-            - if (user = current_user)
-              %li= link_to user.name, member_root_path
-              %li= link_to t('actions.logout'), logout_path, method: :delete
-            - else
-              - if params[:controller] == "session" && params[:action] == "new"
-                %li= link_to t('actions.sign_in'), new_session_path
-              - else
-                %li= link_to t('actions.sign_in'), new_session_path
-                %li= link_to t('actions.sign_up'), sign_up_path
-                
-
-    .container{style: 'margin: 50px auto;'}
-      .row
-        = render "messages"
-        = yield
+    %header
+      = render 'header'
+    .container
+      = render "messages"    
+      = yield
         
-        = render 'footer'
+    = render 'footer'
     

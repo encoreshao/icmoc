@@ -20,9 +20,9 @@
         %td= resource.last_sign_in_ip
         %td
           - if resource.super_admin?
-            = link_to t('actions.mark_as_user'), mark_as_user_admin_user_path(resource), class: 'btn btn-warning', method: :post
+            = link_to t('actions.mark_as_user'), resource_path(resource, event: 'mark_as_user'), class: 'btn btn-danger', method: :put
           - else
-            = link_to t('actions.mark_as_admin'), mark_as_admin_admin_user_path(resource), class: 'btn btn-warning', method: :post
+            = link_to t('actions.mark_as_admin'), resource_path(resource, event: 'mark_as_admin'), class: 'btn btn-warning', method: :put
           = render partial: 'admin/shared/options', locals: { resource: resource }
 
   = paginate collection

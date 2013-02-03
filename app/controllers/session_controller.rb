@@ -2,8 +2,8 @@ class SessionController < ApplicationController
   skip_before_filter :authenticate_user!
 
   def new
-    
     @user = User.new
+    @problem = @user.problems.build
   end
 
   def create

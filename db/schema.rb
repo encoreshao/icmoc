@@ -11,32 +11,61 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130130000910) do
+ActiveRecord::Schema.define(:version => 20130202144852) do
 
   create_table "articles", :force => true do |t|
     t.string   "swap_name"
     t.string   "wish_name"
-    t.string   "code"
     t.float    "price"
     t.string   "qq"
     t.string   "phone"
+    t.string   "condition"
     t.text     "description"
+    t.string   "sku"
+    t.string   "code"
+    t.string   "slug"
     t.integer  "view_count"
     t.integer  "province_id"
     t.integer  "city_id"
     t.integer  "district_id"
     t.integer  "user_id"
+    t.integer  "category_id"
+    t.datetime "publish_at"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
+  add_index "articles", ["category_id"], :name => "index_articles_on_category_id"
   add_index "articles", ["city_id"], :name => "index_articles_on_city_id"
   add_index "articles", ["code"], :name => "index_articles_on_code"
   add_index "articles", ["district_id"], :name => "index_articles_on_district_id"
   add_index "articles", ["province_id"], :name => "index_articles_on_province_id"
+  add_index "articles", ["publish_at"], :name => "index_articles_on_publish_at"
+  add_index "articles", ["sku"], :name => "index_articles_on_sku"
   add_index "articles", ["swap_name"], :name => "index_articles_on_swap_name"
   add_index "articles", ["user_id"], :name => "index_articles_on_user_id"
   add_index "articles", ["wish_name"], :name => "index_articles_on_wish_name"
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.string   "name_en"
+    t.integer  "level"
+    t.integer  "parent_id"
+    t.boolean  "promotion",  :default => false
+    t.boolean  "is_active",  :default => true
+    t.string   "code"
+    t.string   "slug"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  add_index "categories", ["code"], :name => "index_categories_on_code"
+  add_index "categories", ["is_active"], :name => "index_categories_on_is_active"
+  add_index "categories", ["level"], :name => "index_categories_on_level"
+  add_index "categories", ["name"], :name => "index_categories_on_name"
+  add_index "categories", ["name_en"], :name => "index_categories_on_name_en"
+  add_index "categories", ["parent_id"], :name => "index_categories_on_parent_id"
+  add_index "categories", ["promotion"], :name => "index_categories_on_promotion"
 
   create_table "cities", :force => true do |t|
     t.string   "name"
@@ -141,6 +170,20 @@ ActiveRecord::Schema.define(:version => 20130130000910) do
 
   add_index "user_hobbies", ["user_id"], :name => "index_user_hobbies_on_user_id"
 
+  create_table "user_prompt_problems", :force => true do |t|
+    t.string   "problem"
+    t.string   "answer"
+    t.integer  "frequency",  :default => 0
+    t.integer  "user_id"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "user_prompt_problems", ["answer"], :name => "index_user_prompt_problems_on_answer"
+  add_index "user_prompt_problems", ["frequency"], :name => "index_user_prompt_problems_on_frequency"
+  add_index "user_prompt_problems", ["problem"], :name => "index_user_prompt_problems_on_problem"
+  add_index "user_prompt_problems", ["user_id"], :name => "index_user_prompt_problems_on_user_id"
+
   create_table "user_works", :force => true do |t|
     t.string   "unit_name"
     t.datetime "start_time"
@@ -169,10 +212,10 @@ ActiveRecord::Schema.define(:version => 20130130000910) do
     t.string   "last_sign_in_ip"
     t.string   "avatar"
     t.datetime "birthday"
-    t.boolean  "gender",                 :default => false
+    t.boolean  "gender",                 :default => true
     t.string   "blood"
     t.string   "status"
-    t.boolean  "is_hidden",              :default => false
+    t.boolean  "is_active",              :default => false
     t.string   "biography"
     t.integer  "birthplace_province_id"
     t.integer  "birthplace_city_id"
@@ -180,6 +223,7 @@ ActiveRecord::Schema.define(:version => 20130130000910) do
     t.integer  "residence_province_id"
     t.integer  "residence_city_id"
     t.integer  "residence_district_id"
+    t.boolean  "agree_terms",            :default => false
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
   end

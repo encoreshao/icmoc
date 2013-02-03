@@ -1,0 +1,13 @@
+.navbar
+  .navbar-inner
+    %ul.nav.pull-right
+      - if (user = current_user)
+        %li= link_to user.name, member_root_path
+        %li= link_to t('actions.logout'), logout_path, method: :delete
+      - else
+        - if params[:controller] == "session" && (['new', 'create'].include?(params[:action]))
+          %li= link_to t('actions.sign_in'), new_session_path
+        - else
+          - if params[:controller] == "session" && params[:action] != "index"
+            %li= link_to t('actions.sign_in'), new_session_path
+          %li= link_to t('actions.sign_up'), sign_up_path

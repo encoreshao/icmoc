@@ -22,3 +22,11 @@ end
 Personality.blueprint do
   # Attributes here
 end
+
+Category.blueprint do
+  # Attributes here
+end
+
+UserPromptProblem.blueprint do
+  # Attributes here
+end

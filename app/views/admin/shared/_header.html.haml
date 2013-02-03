@@ -1,5 +1,5 @@
 - unless current_user.blank?
-  .navbar.navbar-fixed-top
+  .navbar
     .navbar-inner
       .container
         %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
@@ -9,16 +9,7 @@
         = link_to t('title'), root_path, class: 'brand'
         .container.nav-collapse
           %ul.nav.pull-left
-            = main_nav :provinces do
-              = link_to Province.model_name.human, admin_provinces_path
-            = main_nav :cities do
-              = link_to City.model_name.human, admin_cities_path
-            = main_nav :districts do
-              = link_to District.model_name.human, admin_districts_path
-            = main_nav :users do
-              = link_to User.model_name.human, admin_users_path
-            = main_nav :personalities do
-              = link_to Personality.model_name.human, admin_personalities_path
+            = render 'admin/shared/menu_items'
 
           %ul.nav.pull-right
             %li= link_to t('actions.logout'), logout_path, method: :delete
