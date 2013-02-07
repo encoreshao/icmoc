@@ -1,7 +1,7 @@
 .row
-  = simple_nested_form_for @user, url: details_member_users_path, html: { method: :put } do |f|
+  = simple_nested_form_for resource, url: details_member_users_path, html: { method: :put } do |f|
     %fieldset
-      = f.simple_fields_for :detail, (@user.detail || @detail) do |p|
+      = f.simple_fields_for :detail, (resource.detail || @detail) do |p|
         = p.input :marriage, collection: passport_options(DEFAULTS[:passport_marriage]), prompt: false
         = p.input :somatotype, collection: passport_options(DEFAULTS[:passport_figure]), prompt: false
         =# p.input :character, as: :check_boxes, collection: passport_options(DEFAULTS[:passport_character])

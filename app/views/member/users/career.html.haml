@@ -1,13 +1,13 @@
 .row
   %h3= UserWork.model_name.human
-  = simple_nested_form_for @user, url: career_member_users_path, html: { method: :put } do |f|
+  = simple_nested_form_for resource, url: career_member_users_path, html: { method: :put } do |f|
     %fieldset
       %table.table.table-striped
         %tr
           %td= UserWork.human_attribute_name(:unit_name)
           %td= UserWork.human_attribute_name(:time)
           %td
-        - @user.works.each do |work|
+        - resource.works.each do |work|
           %tr
             = f.simple_fields_for :work, work do |p|
               %td= work.unit_name
@@ -22,7 +22,7 @@
               %td= link_to t('actions.destroy'), '', data: {value: work.indexing}
               
         %tr
-          = f.simple_fields_for :works, @user.works.build do |p|
+          = f.simple_fields_for :works, resource.works.build do |p|
             %td= p.text_field :unit_name
             %td{style: 'text-align: '}
               = p.date_select :start_time, order: [:year, :month], start_year: 1900, end_year: Date.today.year, use_month_numbers: true

@@ -1,11 +1,11 @@
 .row
-  = simple_form_for @user, url: portrait_member_users_path, html: { method: :put } do |f|
-    - unless @user.avatar.blank?
+  = simple_form_for resource, url: portrait_member_users_path, html: { method: :put } do |f|
+    - unless resource.avatar.blank?
       .control-group
         %label
         .controls
-          = image_tag @user.avatar
-          = image_tag @user.avatar.thumb
+          = image_tag resource.avatar
+          = image_tag resource.avatar.thumb
 
     = f.input :avatar, as: :file
 

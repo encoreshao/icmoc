@@ -1,12 +1,12 @@
 # encoding: utf-8
 
 class Member::UsersController < Member::BaseController
-  before_filter :instance_current_user
+  before_filter :instance_sec_nav
 
 
   def basic
     if request.put?
-      if @user.update_attributes(params[:user])
+      if resource.update_attributes(params[:user])
         redirect_to action: :basic
       else
         render action: :basic
@@ -15,9 +15,9 @@ class Member::UsersController < Member::BaseController
   end
 
   def details
-    @detail = UserDetail.new if @user.detail.blank?
+    @detail = UserDetail.new if resource.detail.blank?
     if request.put?
-      if @user.update_attributes params[:user]
+      if resource.update_attributes params[:user]
         redirect_to action: :details
       else
         render action: :details
@@ -26,9 +26,9 @@ class Member::UsersController < Member::BaseController
   end
 
   def interests
-    @hobby = UserHobby.new if @user.hobby.blank?
+    @hobby = UserHobby.new if resource.hobby.blank?
     if request.put?
-      if @user.update_attributes(params[:user])
+      if resource.update_attributes(params[:user])
         redirect_to action: :interests
       else
         render action: :interests
@@ -38,7 +38,7 @@ class Member::UsersController < Member::BaseController
 
   def education
     if request.put?
-      if @user.update_attributes(params[:user])
+      if resource.update_attributes(params[:user])
         redirect_to action: :education
       else
         render action: :education
@@ -48,7 +48,7 @@ class Member::UsersController < Member::BaseController
 
   def career
     if request.put?
-      if @user.update_attributes(params[:user])
+      if resource.update_attributes(params[:user])
         redirect_to action: :career
       else
         render action: :career
@@ -58,7 +58,7 @@ class Member::UsersController < Member::BaseController
 
   def portrait
     if request.put?
-      if @user.update_attributes (params[:user])
+      if resource.update_attributes (params[:user])
         redirect_to action: :portrait
       else
         render action: :portrait
@@ -67,8 +67,11 @@ class Member::UsersController < Member::BaseController
   end
 
   private
-    def instance_current_user
-      @user = current_user
+    def resource
+      current_user
+    end
+
+    def instance_sec_nav
       @sec_nav = params[:action].to_sym
     end
 

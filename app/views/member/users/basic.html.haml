@@ -1,5 +1,5 @@
 .row
-  = simple_form_for @user, url: basic_member_users_path, html: { method: :put } do |f|
+  = simple_form_for resource, url: basic_member_users_path, html: { method: :put } do |f|
     = f.input :name
     = f.input :email,   required: true, disabled: true
     = f.input :gender,  as: :radio_buttons, collection: [[t('select.man'), true], [t('select.famale'), false]]
