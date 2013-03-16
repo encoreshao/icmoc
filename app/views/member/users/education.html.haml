@@ -10,11 +10,10 @@
           %td
         - resource.educationals.each do |educational|
           %tr
-            = f.simple_fields_for :educationals, educational do |p|
-              %td= DEFAULTS[:educationals][educational.school_type][:name]
-              %td= educational.school_name
-              %td= educational.year_in.year
-              %td= link_to t('actions.destroy'), '', data: {value: educational.indexing, type: educational.school_type}
+            %td= DEFAULTS[:educationals][educational.school_type][:name]
+            %td= educational.school_name
+            %td= educational.year_in.year
+            %td= link_to t('actions.destroy'), 'javascript:void(0);', data: {value: educational.indexing, type: educational.school_type}, class: 'destroy'
         %tr
           = f.simple_fields_for :educationals, resource.educationals.build do |p|
             %td= p.select :school_type, passport_options(DEFAULTS[:educationals].reverse)

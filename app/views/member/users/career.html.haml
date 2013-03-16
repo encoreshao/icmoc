@@ -4,22 +4,21 @@
     %fieldset
       %table.table.table-striped
         %tr
-          %td= UserWork.human_attribute_name(:unit_name)
-          %td= UserWork.human_attribute_name(:time)
-          %td
+          %th= UserWork.human_attribute_name(:unit_name)
+          %th= UserWork.human_attribute_name(:time)
+          %th
         - resource.works.each do |work|
           %tr
-            = f.simple_fields_for :work, work do |p|
-              %td= work.unit_name
-              %td
-                = work.start_time.year
-                = '.'.html_safe
-                = work.start_time.month
-                = t('views.to')
-                = work.end_time.year
-                = '.'.html_safe
-                = work.end_time.month
-              %td= link_to t('actions.destroy'), '', data: {value: work.indexing}
+            %td= work.unit_name
+            %td
+              = work.start_time.year
+              = '.'.html_safe
+              = work.start_time.month
+              = t('views.to')
+              = work.end_time.year
+              = '.'.html_safe
+              = work.end_time.month
+            %td= link_to t('actions.destroy'), 'javascript:void(0);', data: {value: work.indexing}, class: 'destroy'
               
         %tr
           = f.simple_fields_for :works, resource.works.build do |p|

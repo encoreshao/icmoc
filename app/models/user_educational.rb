@@ -2,6 +2,9 @@ class UserEducational < ActiveRecord::Base
   attr_accessible :school_name, :school_type, :year_in, :indexing
   belongs_to :user
 
+  validates :school_name, presence: true
+  validates :school_type, presence: true
+
   scope :with_type, lambda { |type| where(school_type: type) }
   before_create :calculate_type_index
 
@@ -9,6 +12,7 @@ class UserEducational < ActiveRecord::Base
     def calculate_type_index
       self.indexing = (user.educationals.with_type(self.school_type).size > 0 ? user.educationals.with_type(self.school_type).last.indexing + 1 : 0)
     end
+
 end
 # == Schema Information
 #

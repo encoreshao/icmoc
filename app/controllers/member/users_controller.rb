@@ -1,69 +1,46 @@
 # encoding: utf-8
 
 class Member::UsersController < Member::BaseController
-  before_filter :instance_sec_nav
-
+  before_filter :instance_second_nav
+  before_filter :ajax_remote, except: [:destroy_career]
 
   def basic
-    if request.put?
-      if resource.update_attributes(params[:user])
-        redirect_to action: :basic
-      else
-        render action: :basic
-      end
-    end
   end
 
   def details
     @detail = UserDetail.new if resource.detail.blank?
-    if request.put?
-      if resource.update_attributes params[:user]
-        redirect_to action: :details
-      else
-        render action: :details
-      end
-    end
   end
 
   def interests
     @hobby = UserHobby.new if resource.hobby.blank?
-    if request.put?
-      if resource.update_attributes(params[:user])
-        redirect_to action: :interests
-      else
-        render action: :interests
-      end
-    end
   end
 
   def education
-    if request.put?
-      if resource.update_attributes(params[:user])
-        redirect_to action: :education
-      else
-        render action: :education
-      end
+    @educational = UserEducational.new if resource.educationals.blank?
+  end
+
+  def destroy_education
+    educational = resource.educationals.where(indexing: params[:index]).first
+    if educational.destroy
+      render json: {status: 200}
+    else
+      render json: {status: 204}
     end
   end
 
   def career
-    if request.put?
-      if resource.update_attributes(params[:user])
-        redirect_to action: :career
-      else
-        render action: :career
-      end
+  end
+
+  def destroy_career
+    work = resource.works.where(indexing: params[:index]).first
+    if work.destroy
+      render json: {status: 200}
+    else
+      render json: {status: 204}
     end
   end
 
   def portrait
-    if request.put?
-      if resource.update_attributes (params[:user])
-        redirect_to action: :portrait
-      else
-        render action: :portrait
-      end
-    end
   end
 
   private
@@ -71,8 +48,18 @@ class Member::UsersController < Member::BaseController
       current_user
     end
 
-    def instance_sec_nav
+    def instance_second_nav
       @sec_nav = params[:action].to_sym
+    end
+
+    def ajax_remote
+      if request.put?
+        if resource.update_attributes (params[:user])
+          redirect_to action: params[:action].to_sym
+        else
+          render action: params[:action].to_sym
+        end
+      end
     end
 
 end

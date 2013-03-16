@@ -2,6 +2,8 @@ class UserWork < ActiveRecord::Base
   attr_accessible :start_time, :end_time, :unit_name, :indexing
   belongs_to :user
   
+  validates :unit_name, presence: true
+
   before_create :calculate_type_index
 
   private

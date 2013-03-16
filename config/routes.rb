@@ -32,6 +32,7 @@ Icmoc::Application.routes.draw do
         put 'career'
         get 'portrait'
         put 'portrait'
+        delete 'destroy_career'
       end
     end
 
