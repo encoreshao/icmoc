@@ -1,5 +1,5 @@
 .page-header
-  %h1= t('actions.new')
+  %h1= t('helpers.submit.create', model: resource_class.model_name.human)
     
 .row
   = render 'form', url: collection_path

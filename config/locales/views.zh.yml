@@ -13,7 +13,7 @@ zh:
     options: 操作
     show: 查看
     destroy: 删除
-    mark_as_user: 设置普通用户
+    mark_as_user: 设置普用户
     mark_as_admin: 设置管理员
     logout: 退出
     sign_in: 登录

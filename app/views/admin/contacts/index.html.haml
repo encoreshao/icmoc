@@ -1,0 +1,23 @@
+.page-header
+  %h3
+    = collection.name.safe_constantize.model_name.human
+    
+= render 'admin/shared/search', url: admin_contacts_path
+
+.cities-container
+  %table.table
+    %tr
+      %th= collection.name.safe_constantize.human_attribute_name(:name)
+      %th= collection.name.safe_constantize.human_attribute_name(:email)
+      %th= collection.name.safe_constantize.human_attribute_name(:mobile)
+      %th= collection.name.safe_constantize.human_attribute_name(:content)
+      %th{class: 'span1'}
+    - collection.each do |resource|
+      %tr
+        %td= resource.name
+        %td= resource.email
+        %td= resource.mobile
+        %td= resource.content
+        %td= render partial: 'admin/shared/options', locals: { resource: resource }
+
+  = paginate collection

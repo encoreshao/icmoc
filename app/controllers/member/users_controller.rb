@@ -54,7 +54,8 @@ class Member::UsersController < Member::BaseController
 
     def ajax_remote
       if request.put?
-        if resource.update_attributes (params[:user])
+        if resource.update_attributes(params[:user])
+          flash[:notice] = 'User was successfully updated.'
           redirect_to action: params[:action].to_sym
         else
           render action: params[:action].to_sym

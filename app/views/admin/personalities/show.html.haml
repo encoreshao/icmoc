@@ -9,10 +9,8 @@
 .personality-detail
   %h3
     %p= resource.name
-  %h5
+  - [:name, :code].each do |field|
     %p
-      = resource.class.human_attribute_name(:name)
-      = resource.name
-    %p
-      = resource.class.human_attribute_name(:code)
-      = resource.code
+      = resource.class.human_attribute_name(field)
+      :
+      = resource.send(field)

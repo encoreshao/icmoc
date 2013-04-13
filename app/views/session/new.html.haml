@@ -9,10 +9,7 @@
       = p.input :problem, required: true
       = p.input :answer, required: true
 
-    .control-group
-      = f.label :terms, required: true
-      .controls
-        = f.text_area :terms, size: '10x5', value: terms_text
+    = f.input :terms, as: :text, size: '10x5', value: terms_text
 
     .control-group
       %label

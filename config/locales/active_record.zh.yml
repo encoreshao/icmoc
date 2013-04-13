@@ -19,6 +19,7 @@ zh:
       personality: 性格
       category: 类别
       user_prompt_problem: 提示问题
+      contact: 消息
 
     attributes:
       user:
@@ -36,6 +37,7 @@ zh:
         gender: 性别
         blood: 血型
         status: 状态
+        admin: 管理员
         biography: 个人简介
         is_active: 是否有效
         avatar: 头像
@@ -91,3 +93,8 @@ zh:
       user_prompt_problem:
         problem: 提示问题
         answer: 提示答案
+      contact:
+        name: 姓名
+        email: 邮箱
+        mobile: 手机
+        content: 消息

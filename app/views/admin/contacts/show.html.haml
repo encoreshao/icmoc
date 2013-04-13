@@ -5,12 +5,9 @@
     = link_to t('actions.back').html_safe, :back, class: 'btn btn-success'
     = link_to t('actions.edit').html_safe, edit_resource_path, class: 'btn'
 
-.district-detail
-  %h3
-    = resource.city.province.name
-    >
-    = resource.city.name
-  - [:name, :name_en, :name_abbr].each do |field|
+
+.contact-detail
+  - [:name, :email, :mobile, :content].each do |field|
     %p
       = resource.class.human_attribute_name(field)
       != ':'

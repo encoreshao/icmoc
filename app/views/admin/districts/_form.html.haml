@@ -2,7 +2,8 @@
   %fieldset
     .control-group
       = f.label :city
-      = f.region_select :city
+      .controls
+        = f.region_select :city
     = f.input :name, required: true
     = f.input :name_en, required: true
     = f.input :name_abbr, required: true

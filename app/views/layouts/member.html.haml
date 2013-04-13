@@ -21,10 +21,10 @@
   %body.member
     .container-fluid
       = render 'member/shared/menu'
-      = render "messages"
       .row-fluid
         = render 'member/shared/sidebar'
         .span9
+          = render "messages"
           = yield
       
       = render 'footer'

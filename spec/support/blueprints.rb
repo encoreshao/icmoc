@@ -30,3 +30,7 @@ end
 UserPromptProblem.blueprint do
   # Attributes here
 end
+
+Contact.blueprint do
+  # Attributes here
+end

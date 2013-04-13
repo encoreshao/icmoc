@@ -1,6 +1,7 @@
 - unless current_user.blank?
   .navbar
     .navbar-inner
+      = link_to t('title'), root_path, class: 'brand'
       %ul.nav.pull-left
         = sec_nav :basic do
           = link_to User.model_name.human, basic_member_users_path

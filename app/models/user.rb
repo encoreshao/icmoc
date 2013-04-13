@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   include Concerns::HasScope
 
   EMAIL_REGEX = /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/
-  attr_accessor :skip_password, :password, :password_confirmation, :terms
+  attr_accessor :skip_password, :password, :password_confirmation, :terms, :admin
   attr_accessible :name, :email, :remember_created_at, :password, :skip_password, :password_confirmation, 
                   :last_sign_in_at, :last_sign_in_ip, :current_sign_in_at, :current_sign_in_ip, :sign_in_count, 
                   :birthday, :gender, :status, :biography, :blood, :is_active, :avatar, 
@@ -66,6 +66,10 @@ class User < ActiveRecord::Base
   def self.login_in_with_email_and_password(email, password)
     _user = scoped.with_email(email).first
     (_user && _user.encrypted_password == Digest::MD5.hexdigest(password)) ? _user : nil
+  end
+
+  def admin
+    is_admin? ? '是' : '否'
   end
 
 end

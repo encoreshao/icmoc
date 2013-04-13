@@ -9,13 +9,8 @@
 .city-detail
   %h3
     %p= resource.province.name
-  %h5
+  - [:name, :name_en, :name_abbr].each do |field|
     %p
-      = resource.class.human_attribute_name(:name)
-      = resource.name
-    %p
-      = resource.class.human_attribute_name(:name_en)
-      = resource.name_en
-    %p
-      = resource.class.human_attribute_name(:name_abbr)
-      = resource.name_abbr
+      = resource.class.human_attribute_name(field)
+      != ':'
+      = resource.send field

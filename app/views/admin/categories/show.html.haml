@@ -8,13 +8,7 @@
 
 .category-detail
   %h3= resource.parent && resource.parent.name
-  %h5
+  - [:name, :name_en, :slug].each do |field|
     %p
-      = resource.class.human_attribute_name(:name)
-      = resource.name
-    %p
-      = resource.class.human_attribute_name(:name_en)
-      = resource.name_en
-    %p
-      = resource.class.human_attribute_name(:slug)
-      = resource.slug
+      = resource.class.human_attribute_name(field)
+      = resource.send(field)

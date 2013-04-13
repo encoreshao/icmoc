@@ -6,10 +6,8 @@
     = link_to t('actions.edit').html_safe, edit_resource_path, class: 'btn'
 
 .user-detail
-  %h5
+  - [:name, :email, :admin].each do |field|
     %p
-      = resource.class.human_attribute_name(:name)
-      = resource.name
-    %p
-      = resource.class.human_attribute_name(:email)
-      = resource.email
+      = resource.class.human_attribute_name(field)
+      != ':'
+      = resource.send(field)

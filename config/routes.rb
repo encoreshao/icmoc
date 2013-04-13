@@ -15,6 +15,7 @@ Icmoc::Application.routes.draw do
     resources :personalities
     resources :categories
     resources :users
+    resources :contacts
     root :to => 'provinces#index'
   end
   namespace :member, path: 'settings', as: :member do
@@ -38,6 +39,8 @@ Icmoc::Application.routes.draw do
 
     root :to => 'users#basic'
   end
+  resources :contacts
+
 
   root :to => 'home#index'
 end
