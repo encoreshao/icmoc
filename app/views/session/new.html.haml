@@ -9,7 +9,7 @@
       = p.input :problem, required: true
       = p.input :answer, required: true
 
-    = f.input :terms, as: :text, size: '10x5', value: terms_text
+    = f.input :terms, as: :text, input_html: { value: terms_text, size: '20x10' }
 
     .control-group
       %label

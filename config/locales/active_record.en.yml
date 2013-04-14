@@ -20,6 +20,7 @@ en:
       personality: Personality
       category: Category
       user_prompt_problem: Problem
+      contact: Contact
 
     attributes:
       user:
@@ -94,3 +95,8 @@ en:
       user_prompt_problem:
         problem: Problem
         answer: Answer
+      contact:
+        name: Name
+        email: Email
+        mobile: Mobile
+        content: Content

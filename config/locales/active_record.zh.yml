@@ -20,6 +20,7 @@ zh:
       category: 类别
       user_prompt_problem: 提示问题
       contact: 消息
+      article: 宝贝
 
     attributes:
       user:
@@ -97,4 +98,18 @@ zh:
         name: 姓名
         email: 邮箱
         mobile: 手机
-        content: 消息
+        content: 建议
+      article:
+        swap_name: 宝贝名称
+        wish_name: 您想换什么
+        description: 宝贝详细描述
+        phone: 联系电话
+        price: 宝贝估价
+        qq: 腾讯QQ
+        view_count: 浏览次数
+        province_id: 交换地点
+        user_id: 用户
+        category_id: 宝贝类型
+        image: 上传宝贝图片
+        slug: 附属信息
+        code: 产品编号

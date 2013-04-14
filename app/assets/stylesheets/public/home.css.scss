@@ -1,0 +1,11 @@
+body.home {
+  .container {
+    ul.provinces {
+      list-style-type: none;
+      li {
+        float: left;
+        width: 50px;
+      }
+    }
+  }
+}

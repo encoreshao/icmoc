@@ -1,6 +1,11 @@
 class Article < ActiveRecord::Base
+  include Concerns::HasScope
   attr_accessible :swap_name, :wish_name, :code, :description, :phone, :price, :qq, 
-                  :view_count, :condition, :province_id, :city_id, :district_id, :sku, :slug
+                  :view_count, :condition, :province_id, :city_id, :district_id, 
+                  :sku, :slug, :image, :category_id, :user_id
+
+  mount_uploader :image, ArticleImageUploader
+
 end
 # == Schema Information
 #
@@ -26,5 +31,6 @@ end
 #  publish_at  :datetime
 #  created_at  :datetime        not null
 #  updated_at  :datetime        not null
+#  image       :string(255)
 #
 

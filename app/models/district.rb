@@ -3,7 +3,7 @@
 class District < ActiveRecord::Base
 	include Concerns::HasScope
 	
-  attr_accessible :name, :city_id, :name_en, :name_abbr
+  attr_accessible :name, :city_id, :name_en, :name_abbr, :promote
 
   validates :name, :name_en, :name_abbr, :city_id, presence: true
   validates :name, :name_en, :name_abbr, uniqueness: { scope: :city_id }
@@ -17,7 +17,7 @@ class District < ActiveRecord::Base
 	end
 	
 	def short_name
-		@short_name ||= name.gsub(/区|县|市|自治县/, '')
+		@short_name ||= name.gsub(/市|省|自治州|自治区|回族|维吾尔|壮族|地区|特别行政区/, '')
 	end
 	
 	def siblings
@@ -36,5 +36,6 @@ end
 #  name_abbr  :string(255)
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
+#  promote    :boolean(1)      default(FALSE)
 #
 

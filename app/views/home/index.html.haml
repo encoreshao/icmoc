@@ -1,4 +1,3 @@
-= form_for @article do |f|
-  = f.region_select [:province, :city, :district]
-  
-  = f.submit class: 'btn'
+%ul.provinces
+  - Province.scoped.each do |province|
+    %li= link_to province.short_name, "/#{province.name_abbr}"

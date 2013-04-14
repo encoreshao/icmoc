@@ -1,12 +1,5 @@
 body {
   width: 100%;
-  #session {
-    form {
-      input[type=text], input[type=password], input[type=email], textarea{ 
-        width: 400px; 
-      }
-    }
-  }
   form {
     table {
       td {
@@ -16,6 +9,7 @@ body {
       }
     }
     .control-group {
+      margin-bottom: 0px;
       label {
         float: left;
         min-width: 15%;

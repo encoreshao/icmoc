@@ -1,0 +1,12 @@
+body.session {
+  .container {
+    #session.span9 {
+      form {
+        .control-group { margin-bottom: 5px; }
+        input[type=text], input[type=password], input[type=email], textarea { 
+          width: 400px; 
+        }
+      }
+    }
+  }
+}

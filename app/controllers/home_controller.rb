@@ -4,4 +4,10 @@ class HomeController < ApplicationController
   def index
     @article = Article.new
   end
+
+  def agreement
+  end
+
+  def help
+  end
 end

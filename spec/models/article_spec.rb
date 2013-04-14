@@ -27,5 +27,6 @@ end
 #  publish_at  :datetime
 #  created_at  :datetime        not null
 #  updated_at  :datetime        not null
+#  image       :string(255)
 #
 

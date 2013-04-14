@@ -1,4 +1,5 @@
 class ContactsController < ApplicationController
+  skip_before_filter :authenticate_user!
   inherit_resources
 
   def create

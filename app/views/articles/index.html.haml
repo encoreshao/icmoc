@@ -1,0 +1,10 @@
+.articles-container
+  %table.table
+    %tr
+      %th= collection.name.safe_constantize.human_attribute_name(:wish_name)
+      %th{class: 'span3'}
+    - collection.each do |resource|
+      %tr
+        %td= resource.wish_name
+        %td= image_tag resource.image.thumb
+  = paginate collection

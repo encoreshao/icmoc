@@ -12,4 +12,6 @@
  *= require bootstrap_and_overrides
  *= require common
  *= require form
+ *= require public/home
+ *= require public/session
  */

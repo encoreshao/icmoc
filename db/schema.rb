@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130413102620) do
+ActiveRecord::Schema.define(:version => 20130414143333) do
 
   create_table "articles", :force => true do |t|
     t.string   "swap_name"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20130413102620) do
     t.datetime "publish_at"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "image"
   end
 
   add_index "articles", ["category_id"], :name => "index_articles_on_category_id"
@@ -74,8 +75,9 @@ ActiveRecord::Schema.define(:version => 20130413102620) do
     t.string   "zip_code"
     t.string   "name_en"
     t.string   "name_abbr"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.boolean  "promote",     :default => false
   end
 
   add_index "cities", ["level"], :name => "index_cities_on_level"
@@ -100,8 +102,9 @@ ActiveRecord::Schema.define(:version => 20130413102620) do
     t.integer  "city_id"
     t.string   "name_en"
     t.string   "name_abbr"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "promote",    :default => false
   end
 
   add_index "districts", ["city_id"], :name => "index_districts_on_city_id"
@@ -120,8 +123,9 @@ ActiveRecord::Schema.define(:version => 20130413102620) do
     t.string   "name"
     t.string   "name_en"
     t.string   "name_abbr"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "promote",    :default => false
   end
 
   add_index "provinces", ["name"], :name => "index_provinces_on_name"

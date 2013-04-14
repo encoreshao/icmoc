@@ -3,7 +3,7 @@
 class City < ActiveRecord::Base
   include Concerns::HasScope
   
-  attr_accessible :name, :province_id, :level, :zip_code, :name_en, :name_abbr
+  attr_accessible :name, :province_id, :level, :zip_code, :name_en, :name_abbr, :promote
 
   validates :name, :name_en, :name_abbr, :province_id, presence: true
   validates :name, :name_en, :name_abbr, uniqueness: { scope: :province_id }
@@ -14,7 +14,7 @@ class City < ActiveRecord::Base
   scope :with_province, ->(province) { where(province_id: province) }
 
   def short_name
-    @short_name ||= name.gsub(/市|自治州|地区|特别行政区/, '')
+    @short_name ||= name.gsub(/市|省|自治州|自治区|回族|维吾尔|壮族|地区|特别行政区/, '')
   end
 
   def siblings
@@ -35,5 +35,6 @@ end
 #  name_abbr   :string(255)
 #  created_at  :datetime        not null
 #  updated_at  :datetime        not null
+#  promote     :boolean(1)      default(FALSE)
 #
 

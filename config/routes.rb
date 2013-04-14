@@ -5,9 +5,12 @@ Icmoc::Application.routes.draw do
   match '/session/new' => "session#create",    as: :create_session, via: [:post]
   match '/login' => "session#login",    as: :session, via: [:post]
   match '/logout' => "session#logout",    as: :logout, via: [:delete]
+  match '/agreement' => "home#agreement",    as: :agreement, via: [:get]
+  match '/help' => "home#help",    as: :help, via: [:get]
+  match '/about' => "home#about",    as: :about, via: [:get]
+  match '/copyright' => "home#copyright",    as: :copyright, via: [:get]
 
-  resources :articles
-
+  # ICMOC Admin Tool
   namespace :admin, as: :admin, path: 'admin' do
     resources :provinces
     resources :cities
@@ -18,6 +21,7 @@ Icmoc::Application.routes.draw do
     resources :contacts
     root :to => 'provinces#index'
   end
+
   namespace :member, path: 'settings', as: :member do
     resources :users, path: 'p', only: [] do
       collection do
@@ -39,8 +43,8 @@ Icmoc::Application.routes.draw do
 
     root :to => 'users#basic'
   end
-  resources :contacts
-
+  resources :contacts, only: [:new, :create]
+  resources :articles, only: [:index, :new, :create, :show]
 
   root :to => 'home#index'
 end
