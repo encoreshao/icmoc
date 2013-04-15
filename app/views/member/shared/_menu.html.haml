@@ -17,4 +17,6 @@
           = link_to t('member.header.portrait'), portrait_member_users_path
         %li.divider-vertical
       %ul.nav.pull-right
+        - if current_user.is_admin?
+          %li= link_to '后台', admin_root_path
         %li= link_to t('actions.logout'), logout_path, method: :delete

@@ -12,4 +12,5 @@
             = render 'admin/shared/menu_items'
 
           %ul.nav.pull-right
+            %li= link_to '个人设置', member_root_path
             %li= link_to t('actions.logout'), logout_path, method: :delete
