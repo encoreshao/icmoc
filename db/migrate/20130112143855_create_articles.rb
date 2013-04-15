@@ -11,7 +11,7 @@ class CreateArticles < ActiveRecord::Migration
       t.string  :sku
       t.string  :code
       t.string  :slug
-      t.integer :view_count
+      t.integer :view_count, default: 0
       t.references :province
       t.references :city
       t.references :district

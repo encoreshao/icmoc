@@ -11,10 +11,12 @@ class Admin::UsersController < Admin::BaseController
 
       redirect_to :back, notice: 'Operation Success'
     else
-      resource.skip_password = true if params[:user][:password].blank?
+      params[:user][:skip_password] = true if params[:user][:password].blank?
 
       update! do |success, failure|
-        success.html
+        success.html {
+          redirect_to collection_path, notice: "Update #{resource.name} Successed."
+        }
         failure.html {
           render :edit
         }

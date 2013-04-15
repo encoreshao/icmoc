@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(:version => 20130415080954) do
     t.string   "sku"
     t.string   "code"
     t.string   "slug"
-    t.integer  "view_count"
+    t.integer  "view_count",       :default => 0
     t.integer  "province_id"
     t.integer  "city_id"
     t.integer  "district_id"
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(:version => 20130415080954) do
     t.integer  "article_level_id"
     t.string   "image"
     t.datetime "publish_at"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   add_index "articles", ["article_level_id"], :name => "index_articles_on_article_level_id"

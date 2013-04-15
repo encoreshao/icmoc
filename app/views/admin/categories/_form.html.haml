@@ -1,6 +1,6 @@
 = simple_form_for resource, url: url, html: { class: 'form-horizontal' } do |f|
   %fieldset
-    = f.input :parent_id, collection: Category.tags.map{|a| [a.name, a.id]}, prompt: 'Select a Category', input_html: { class: 'fixed-width' }
+    = f.input :parent_id, collection: Category.tags.map{|a| [a.name, a.id]}, prompt: '选择类型', input_html: { class: 'fixed-width' }
     = f.input :name, required: true
     = f.input :name_en, required: true
     = f.input :slug, as: :text, input_html: { rows: 5 }

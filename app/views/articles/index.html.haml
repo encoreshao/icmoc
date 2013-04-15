@@ -1,7 +1,7 @@
 .provinces.clearfix
   %ul
     - Province.scoped.each do |province|
-      %li= link_to province.short_name, ''
+      %li= link_to province.short_name, articles_path(prov: province.name_abbr)
 
 .sub-nav.clearfix
   %h5 热门搜索

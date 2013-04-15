@@ -5,12 +5,27 @@
     = link_to t('actions.back').html_safe, :back, class: 'btn btn-success'
 
 
-.category-detail
-  - [:swap_name, :wish_name, :publish_at, :image].each do |field|
-    %p
-      = resource.class.human_attribute_name(field)
-      - if field == :image
-        = image_tag resource.send(field)
-        = image_tag resource.send(field).thumb
-      - else
-        = resource.send(field)
+.article-detail.row{style: 'margin-left: 0px;'}
+  .span3
+    = image_tag resource.image
+  .span9
+    %table
+      %tr
+        %td= resource.class.human_attribute_name(:swap_name)
+        %td= resource.swap_name
+      %tr
+        %td= resource.class.human_attribute_name(:wish_name)
+        %td= resource.wish_name
+      %tr
+        %td= resource.class.human_attribute_name(:publish_at)
+        %td= resource.publish_at.to_s(:db)
+      %tr
+        %td= resource.class.human_attribute_name(:category_id)
+        %td= resource.category && resource.category.name
+      %tr
+        %td= resource.class.human_attribute_name(:province_id)
+        %td= resource.province && resource.province.name
+      %tr
+        %td= resource.class.human_attribute_name(:article_level_id)
+        %td= resource.article_level && resource.article_level.name
+

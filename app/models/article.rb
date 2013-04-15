@@ -1,5 +1,4 @@
 class Article < ActiveRecord::Base
-  include Concerns::HasScope
   attr_accessible :swap_name, :wish_name, :code, :description, :phone, :price, :qq, 
                   :view_count, :condition, :province_id, :city_id, :district_id, 
                   :sku, :slug, :image, :category_id, :user_id, :publish_at, :article_level_id
@@ -15,6 +14,10 @@ class Article < ActiveRecord::Base
   belongs_to :article_level
 
   scope :with_name, ->(name) { name.blank? ? nil : where("swap_name LIKE ? OR wish_name LIKE ?", "%#{name}%", "%#{name}%") }
+  scope :with_province, ->(prov) { 
+    prov.blank? ? nil : 
+      joins(:province).where("provinces.name_abbr = ?", prov) 
+  }
 
 end
 # == Schema Information

@@ -20,6 +20,7 @@ Icmoc::Application.routes.draw do
     resources :users
     resources :contacts
     resources :articles
+    resources :article_levels
     root :to => 'provinces#index'
   end
 
@@ -44,7 +45,7 @@ Icmoc::Application.routes.draw do
 
     root :to => 'users#basic'
   end
-  resources :contacts, only: [:new, :create]
+  resources :contacts, only: [:new, :create, :index]
   resources :articles, only: [:index, :new, :create, :show]
 
   root :to => 'articles#index'

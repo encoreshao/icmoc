@@ -21,6 +21,7 @@ zh:
       user_prompt_problem: 提示问题
       contact: 消息
       article: 宝贝
+      article_level: 成色
 
     attributes:
       user:
@@ -116,3 +117,6 @@ zh:
         code: 产品编号
         publish_at: 发布时间
         article_level_id: 新旧程度
+      article_level:
+        name: 名称
+        code: 编号

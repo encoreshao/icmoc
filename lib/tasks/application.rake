@@ -41,6 +41,7 @@ unless Rails.env.production?
               qq: rand(36 ** 6).to_s(9),
               province_id: Province.scoped.sample.id,
               publish_at: Time.now,
+              price: rand(100).to_f,
               user_id: User.scoped.sample.id,
               category_id: Category.scoped.sample.id,
               image: File.new(file_path),

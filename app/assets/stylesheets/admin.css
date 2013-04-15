@@ -10,7 +10,7 @@
  *
  *= require_self
  *= require bootstrap_and_overrides
- *= require admin/common
  *= require common
  *= require form
+ *= require admin/common
  */

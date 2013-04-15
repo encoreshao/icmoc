@@ -1,0 +1,2 @@
+module Admin::ArticleLevelsHelper
+end
