@@ -3,7 +3,7 @@ class Article < ActiveRecord::Base
                   :view_count, :condition, :province_id, :city_id, :district_id, 
                   :sku, :slug, :image, :category_id, :user_id, :publish_at, :article_level_id
 
-  paginates_per 36
+  paginates_per 42
 
   mount_uploader :image, ArticleImageUploader
   validates :swap_name, :wish_name, :user_id, :category_id, :province_id, presence: true
