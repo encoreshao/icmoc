@@ -1,0 +1,16 @@
+.page-header
+  %h3
+    = resource.class.model_name.human
+    %small
+    = link_to t('actions.back').html_safe, :back, class: 'btn btn-success'
+
+
+.category-detail
+  - [:swap_name, :wish_name, :publish_at, :image].each do |field|
+    %p
+      = resource.class.human_attribute_name(field)
+      - if field == :image
+        = image_tag resource.send(field)
+        = image_tag resource.send(field).thumb
+      - else
+        = resource.send(field)

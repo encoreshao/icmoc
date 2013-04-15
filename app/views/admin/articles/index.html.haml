@@ -1,0 +1,25 @@
+.page-header
+  %h3
+    = collection.name.safe_constantize.model_name.human
+    %small
+    = link_to t('actions.new').html_safe, new_resource_path, class: 'btn'
+    
+= render 'admin/shared/search', url: admin_articles_path
+
+.articles-container
+  %table.table
+    %tr
+      %th= collection.name.safe_constantize.human_attribute_name(:swap_name)
+      %th= collection.name.safe_constantize.human_attribute_name(:wish_name)
+      %th= collection.name.safe_constantize.human_attribute_name(:user_id)
+      %th= collection.name.safe_constantize.human_attribute_name(:publish_at)
+      %th{class: 'span1'}
+    - collection.each do |resource|
+      %tr
+        %td= resource.swap_name
+        %td= resource.wish_name
+        %th= resource.user && resource.user.name
+        %th= resource.publish_at
+        %td= render partial: 'admin/shared/options', locals: { resource: resource }
+
+  = paginate collection

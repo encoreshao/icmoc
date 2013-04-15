@@ -2,15 +2,17 @@
   = simple_form_for resource, url: url, html: { class: 'form-horizontal' } do |f|
     %fieldset
       = f.input :user_id, as: :hidden, input_html: { value: 1 }
-      = f.input :category_id, collection: Category.tags.map{|a| [a.name, a.id]}, prompt: '选择类型', input_html: { class: 'fixed-width' }
-      = f.input :province_id, collection: Province.scoped.map{|a| [a.name, a.id]}, prompt: '选择交易城市', input_html: { class: 'fixed-width' }
+      = f.input :publish_at, as: :hidden, input_html: { value: Time.now }
       = f.input :swap_name, required: true
       = f.input :wish_name, required: true
+      = f.input :article_level_id, collection: ArticleLevel.scoped.map{|a| [a.name, a.id]}, input_html: { class: 'fixed-width' }, include_blank: false, required: true
+      = f.input :category_id, collection: Category.tags.map{|a| [a.name, a.id]}, prompt: '选择类型', input_html: { class: 'fixed-width' }, required: true
+      = f.input :province_id, collection: Province.scoped.map{|a| [a.name, a.id]}, prompt: '选择交易城市', input_html: { class: 'fixed-width' }, required: true
       = f.input :phone, required: true
-      = f.input :qq, required: true
-      = f.input :slug, required: true
+      = f.input :qq
+      = f.input :slug
       = f.input :image, required: true
-      = f.input :description, as: :text, input_html: { rows: 5 }
+      = f.input :description, as: :text, input_html: { rows: 5 }, required: true
 
       .control-group
         %label

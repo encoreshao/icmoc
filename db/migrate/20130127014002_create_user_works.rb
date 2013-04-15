@@ -11,8 +11,5 @@ class CreateUserWorks < ActiveRecord::Migration
     end
 
     add_index :user_works, :user_id
-    add_index :user_works, :start_time
-    add_index :user_works, :end_time
-    add_index :user_works, :unit_name
   end
 end

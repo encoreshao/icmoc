@@ -1,10 +1,24 @@
+.provinces.clearfix
+  %ul
+    - Province.scoped.each do |province|
+      %li= link_to province.short_name, ''
+
+.sub-nav.clearfix
+  %h5 热门搜索
+  %ul
+
 .articles-container
   %table.table
-    %tr
-      %th= collection.name.safe_constantize.human_attribute_name(:wish_name)
-      %th{class: 'span3'}
-    - collection.each do |resource|
+    - collection.each_slice(6) do |articles|
       %tr
-        %td= resource.wish_name
-        %td= image_tag resource.image.thumb
+        - articles.each do |resource|
+          %td
+            .image
+              = image_tag resource.image.thumb, class: 'img-polaroid'
+            .name
+              = link_to resource.swap_name, article_path(resource)
+            .detail
+              %code= resource.article_level.name
+              = resource.province.short_name
+
   = paginate collection

@@ -15,10 +15,6 @@ class CreateCategories < ActiveRecord::Migration
 
     add_index :categories, :name
     add_index :categories, :name_en
-    add_index :categories, :promotion
-    add_index :categories, :code
     add_index :categories, :parent_id
-    add_index :categories, :is_active
-    add_index :categories, :level
   end
 end

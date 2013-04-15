@@ -10,11 +10,7 @@ class CreateUserEducationals < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :user_educationals, :school_type
     add_index :user_educationals, :indexing
-    add_index :user_educationals, [:school_type, :indexing]
-    add_index :user_educationals, :school_name
-    add_index :user_educationals, :year_in
     add_index :user_educationals, :user_id
   end
 end

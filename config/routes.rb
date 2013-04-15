@@ -19,6 +19,7 @@ Icmoc::Application.routes.draw do
     resources :categories
     resources :users
     resources :contacts
+    resources :articles
     root :to => 'provinces#index'
   end
 
@@ -46,5 +47,5 @@ Icmoc::Application.routes.draw do
   resources :contacts, only: [:new, :create]
   resources :articles, only: [:index, :new, :create, :show]
 
-  root :to => 'home#index'
+  root :to => 'articles#index'
 end

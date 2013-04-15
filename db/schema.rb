@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130414143333) do
+ActiveRecord::Schema.define(:version => 20130415080954) do
+
+  create_table "article_levels", :force => true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "articles", :force => true do |t|
     t.string   "swap_name"
@@ -30,19 +37,16 @@ ActiveRecord::Schema.define(:version => 20130414143333) do
     t.integer  "district_id"
     t.integer  "user_id"
     t.integer  "category_id"
-    t.datetime "publish_at"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "article_level_id"
     t.string   "image"
+    t.datetime "publish_at"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
+  add_index "articles", ["article_level_id"], :name => "index_articles_on_article_level_id"
   add_index "articles", ["category_id"], :name => "index_articles_on_category_id"
-  add_index "articles", ["city_id"], :name => "index_articles_on_city_id"
-  add_index "articles", ["code"], :name => "index_articles_on_code"
-  add_index "articles", ["district_id"], :name => "index_articles_on_district_id"
   add_index "articles", ["province_id"], :name => "index_articles_on_province_id"
-  add_index "articles", ["publish_at"], :name => "index_articles_on_publish_at"
-  add_index "articles", ["sku"], :name => "index_articles_on_sku"
   add_index "articles", ["swap_name"], :name => "index_articles_on_swap_name"
   add_index "articles", ["user_id"], :name => "index_articles_on_user_id"
   add_index "articles", ["wish_name"], :name => "index_articles_on_wish_name"
@@ -60,13 +64,9 @@ ActiveRecord::Schema.define(:version => 20130414143333) do
     t.datetime "updated_at",                    :null => false
   end
 
-  add_index "categories", ["code"], :name => "index_categories_on_code"
-  add_index "categories", ["is_active"], :name => "index_categories_on_is_active"
-  add_index "categories", ["level"], :name => "index_categories_on_level"
   add_index "categories", ["name"], :name => "index_categories_on_name"
   add_index "categories", ["name_en"], :name => "index_categories_on_name_en"
   add_index "categories", ["parent_id"], :name => "index_categories_on_parent_id"
-  add_index "categories", ["promotion"], :name => "index_categories_on_promotion"
 
   create_table "cities", :force => true do |t|
     t.string   "name"
@@ -147,9 +147,6 @@ ActiveRecord::Schema.define(:version => 20130414143333) do
     t.datetime "updated_at",          :null => false
   end
 
-  add_index "user_details", ["educational_level"], :name => "index_user_details_on_educational_level"
-  add_index "user_details", ["marriage"], :name => "index_user_details_on_marriage"
-  add_index "user_details", ["somatotype"], :name => "index_user_details_on_somatotype"
   add_index "user_details", ["user_id"], :name => "index_user_details_on_user_id"
 
   create_table "user_educationals", :force => true do |t|
@@ -163,11 +160,7 @@ ActiveRecord::Schema.define(:version => 20130414143333) do
   end
 
   add_index "user_educationals", ["indexing"], :name => "index_user_educationals_on_indexing"
-  add_index "user_educationals", ["school_name"], :name => "index_user_educationals_on_school_name"
-  add_index "user_educationals", ["school_type", "indexing"], :name => "index_user_educationals_on_school_type_and_indexing"
-  add_index "user_educationals", ["school_type"], :name => "index_user_educationals_on_school_type"
   add_index "user_educationals", ["user_id"], :name => "index_user_educationals_on_user_id"
-  add_index "user_educationals", ["year_in"], :name => "index_user_educationals_on_year_in"
 
   create_table "user_hobbies", :force => true do |t|
     t.string   "books"
@@ -193,9 +186,6 @@ ActiveRecord::Schema.define(:version => 20130414143333) do
     t.datetime "updated_at",                :null => false
   end
 
-  add_index "user_prompt_problems", ["answer"], :name => "index_user_prompt_problems_on_answer"
-  add_index "user_prompt_problems", ["frequency"], :name => "index_user_prompt_problems_on_frequency"
-  add_index "user_prompt_problems", ["problem"], :name => "index_user_prompt_problems_on_problem"
   add_index "user_prompt_problems", ["user_id"], :name => "index_user_prompt_problems_on_user_id"
 
   create_table "user_works", :force => true do |t|
@@ -208,9 +198,6 @@ ActiveRecord::Schema.define(:version => 20130414143333) do
     t.datetime "updated_at", :null => false
   end
 
-  add_index "user_works", ["end_time"], :name => "index_user_works_on_end_time"
-  add_index "user_works", ["start_time"], :name => "index_user_works_on_start_time"
-  add_index "user_works", ["unit_name"], :name => "index_user_works_on_unit_name"
   add_index "user_works", ["user_id"], :name => "index_user_works_on_user_id"
 
   create_table "users", :force => true do |t|

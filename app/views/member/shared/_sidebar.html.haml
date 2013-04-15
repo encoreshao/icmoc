@@ -15,6 +15,9 @@
       = sec_nav :portrait do
         = link_to t('member.header.portrait'), portrait_member_users_path
       
+      %li.nav-header= t('member.header.articles')
+      = sec_nav :articles do
+        = link_to Article.model_name.human, ""
       %li.nav-header= t('member.header.privacy')
       %li= link_to t('member.header.other'), '#'
       %li.divider

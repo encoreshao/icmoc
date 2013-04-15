@@ -1,4 +1,43 @@
-.article-detail
-  %h3
-    %p= resource.wish_name
-  %p= resource.image_url
+.sub_nav
+  %h4
+    = link_to '首页', root_path
+    != '/'
+    = link_to "所有宝贝", articles_path
+    != '/'
+    = resource.swap_name
+
+.article-detail.row
+  .span3
+    = image_tag resource.image, class: 'img-polaroid'
+  .span9
+    %table
+      %tr
+        %td= resource.class.human_attribute_name(:wish_name)
+        %td= resource.wish_name
+      %tr
+        %td= resource.class.human_attribute_name(:article_level_id)
+        %td= resource.article_level.name
+      %tr
+        %td= resource.class.human_attribute_name(:province_id)
+        %td= resource.province.name
+      %tr
+        %td= resource.class.human_attribute_name(:category_id)
+        %td= resource.category.name
+      %tr
+        %td= resource.class.human_attribute_name(:price)
+        %td= resource.price
+      %tr
+        %td= resource.class.human_attribute_name(:phone)
+        %td= resource.phone
+      %tr
+        %td= resource.class.human_attribute_name(:qq)
+        %td= resource.qq
+      %tr
+        %td= resource.class.human_attribute_name(:publish_at)
+        %td= resource.publish_at
+      %tr
+        %td= resource.class.human_attribute_name(:user_id)
+        %td= resource.user.name
+      %tr
+        %td= resource.class.human_attribute_name(:description)
+        %td= resource.description

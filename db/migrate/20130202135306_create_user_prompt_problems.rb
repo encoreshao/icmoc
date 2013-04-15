@@ -10,8 +10,5 @@ class CreateUserPromptProblems < ActiveRecord::Migration
     end
 
     add_index :user_prompt_problems, :user_id
-    add_index :user_prompt_problems, :problem
-    add_index :user_prompt_problems, :answer
-    add_index :user_prompt_problems, :frequency
   end
 end

@@ -100,6 +100,7 @@ zh:
         mobile: 手机
         content: 建议
       article:
+        name: 宝贝名称
         swap_name: 宝贝名称
         wish_name: 您想换什么
         description: 宝贝详细描述
@@ -110,6 +111,8 @@ zh:
         province_id: 交换地点
         user_id: 用户
         category_id: 宝贝类型
-        image: 上传宝贝图片
+        image: 宝贝图片
         slug: 附属信息
         code: 产品编号
+        publish_at: 发布时间
+        article_level_id: 新旧程度

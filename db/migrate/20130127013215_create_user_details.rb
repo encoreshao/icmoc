@@ -16,8 +16,5 @@ class CreateUserDetails < ActiveRecord::Migration
     end
 
     add_index :user_details, :user_id
-    add_index :user_details, :somatotype
-    add_index :user_details, :marriage
-    add_index :user_details, :educational_level
   end
 end

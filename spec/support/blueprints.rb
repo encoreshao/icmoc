@@ -34,3 +34,7 @@ end
 Contact.blueprint do
   # Attributes here
 end
+
+ArticleLevel.blueprint do
+  # Attributes here
+end

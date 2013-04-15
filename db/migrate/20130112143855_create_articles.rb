@@ -17,7 +17,8 @@ class CreateArticles < ActiveRecord::Migration
       t.references :district
       t.references :user
       t.references :category
-
+      t.references :article_level
+      t.string :image
       t.datetime  :publish_at
 
       t.timestamps
@@ -25,13 +26,9 @@ class CreateArticles < ActiveRecord::Migration
 
     add_index :articles, :swap_name
     add_index :articles, :wish_name
-    add_index :articles, :code
-    add_index :articles, :sku
-    add_index :articles, :publish_at
     add_index :articles, :province_id
-    add_index :articles, :city_id
-    add_index :articles, :district_id
     add_index :articles, :user_id
     add_index :articles, :category_id
+    add_index :articles, :article_level_id
   end
 end
