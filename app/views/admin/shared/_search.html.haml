@@ -1,5 +1,5 @@
 .search
   = form_tag url, method: :get, class: 'form-search' do
     = label_tag :name, collection.name.safe_constantize.human_attribute_name(:name)
-    = text_field_tag :name, params[:name], class: 'input-large search-query'
+    = text_field_tag :name, params[:name], class: 'input-large'
     = submit_tag t('actions.search'), class: 'btn'

@@ -3,6 +3,6 @@ class Admin::ArticlesController < Admin::BaseController
   
   protected
     def collection
-      @articles ||= end_of_association_chain.with_name(params[:name]).page(params[:page])
+      @articles ||= end_of_association_chain.with_name(params[:name]).page(params[:page]).per(10)
     end
 end

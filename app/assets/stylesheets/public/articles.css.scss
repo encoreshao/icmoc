@@ -9,6 +9,19 @@ body.articles > .container {
       }
     }
   }
+  .sub-nav {
+    margin-top: 10px;
+    ul {
+      list-style-type: none;
+      li {
+        float: left;
+        margin-left: 10px;
+        form {
+          margin: 0px;
+        }
+      }
+    }
+  }
   .articles-container {
     table {
       tr {

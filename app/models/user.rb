@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
                   :birthplace_province_id, :birthplace_city_id, :birthplace_district_id,
                   :residence_province_id, :residence_city_id, :residence_district_id, 
                   :detail_attributes, :hobby_attributes, :works_attributes, :educationals_attributes, :problems_attributes,
-                  :agree_terms, :terms
+                  :agree_terms, :terms, :is_admin
 
   mount_uploader :avatar, UserAvatarUploader
 
@@ -46,11 +46,11 @@ class User < ActiveRecord::Base
   end
 
   def mark_as_admin!
-    update_attribute(:is_admin, true)
+    update_attributes(is_admin: true, skip_password: true)
   end
   
   def mark_as_user!
-    update_attribute(:is_admin, false)
+    update_attributes(is_admin: false, skip_password: true)
   end
 
   def reset_login_infomations(ip)

@@ -1,5 +1,8 @@
 = simple_form_for resource, url: url, html: { class: 'form-horizontal' } do |f|
-  = resource.errors.full_messages
+  
+  .control-group
+    %label
+    .controls{style: 'color: red;'}= resource.errors.full_messages.join(',')
   = f.input :name, required: true
   = f.input :email, required: true
 

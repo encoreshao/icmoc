@@ -7,11 +7,15 @@ class Admin::UsersController < Admin::BaseController
 
   def update
     if params.key?(:event)
-      resource.send("#{params[:event]}!")
+      if resource.send("#{params[:event]}!")
 
-      redirect_to :back, notice: 'Operation Success'
+        redirect_to :back, notice: 'Operation Success'
+      else
+        render :edit
+      end
     else
       params[:user][:skip_password] = true if params[:user][:password].blank?
+
 
       update! do |success, failure|
         success.html {
