@@ -1,9 +1,9 @@
-.provinces.clearfix
+%section.provinces.clearfix
   %ul
     - Province.scoped.each do |province|
       %li= link_to province.short_name, articles_path(prov: province.name_abbr)
 
-.sub-nav.clearfix
+%section.sub-nav.clearfix
   %ul.pull-right
     %li
       = form_tag("", method: :get, class: 'form-search') do
@@ -12,18 +12,49 @@
         = hidden_field_tag :prov, params[:prov]
         = submit_tag "Search", class: 'btn'
 
-.articles-container
-  %table.table
-    - collection.each_slice(7) do |articles|
-      %tr
-        - articles.each do |resource|
-          %td
-            .image
-              = image_tag resource.image.thumb, class: 'img-polaroid'
-            .name
-              = link_to resource.swap_name, article_path(resource)
-            .detail
-              %code= resource.article_level.name
-              = resource.province.short_name
 
-  = paginate collection
+%section.row
+  .articles-container.span9
+    - unless collection.blank?
+      %table.table
+        - collection.each_slice(5) do |articles|
+          %tr
+            - articles.each do |resource|
+              %td
+                .image
+                  = image_tag resource.image.thumb, class: 'img-polaroid'
+                .name
+                  = link_to resource.swap_name, article_path(resource)
+                .detail
+                  %code= resource.article_level.name
+                  = resource.province.short_name
+      = paginate collection
+    - else
+      .alert.alert-info 
+        没有匹配出来查询结果
+        %a{class: 'close', data: {dismiss: 'alert'}} &times;
+
+  .span3
+    .promote-users
+      .navbar
+        .navbar-inner
+          %a.brand 最近注册用户
+      %ul.nav
+        - User.scoped.each do |user|
+          %li
+            .image
+              = image_tag user.avatar.thumb, size: '68x68', class: 'img-polaroid'
+            .detail
+              %strong= user.name
+    .promote-articles
+      .navbar
+        .navbar-inner
+          %a.brand 最近交易的宝贝
+      %ul.nav
+        - Article.scoped.limit(6).each_slice(2).each do |articles|
+          - articles.each do |article|
+            %li{style: 'float: left;margin-left: 10px;'}
+              .image
+                = image_tag article.image.thumb, size: '80x80', class: 'img-polaroid'
+              .detail
+                = article.swap_name

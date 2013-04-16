@@ -39,7 +39,7 @@
         %td= resource.qq
       %tr
         %td= resource.class.human_attribute_name(:publish_at)
-        %td= resource.publish_at
+        %td= resource.publish_at.to_s(:db)
       %tr
         %td= resource.class.human_attribute_name(:user_id)
         %td= resource.user.name

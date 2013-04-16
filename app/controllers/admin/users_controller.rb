@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class Admin::UsersController < Admin::BaseController
   main_nav_highlight :users
 
@@ -9,7 +11,7 @@ class Admin::UsersController < Admin::BaseController
     if params.key?(:event)
       if resource.send("#{params[:event]}!")
 
-        redirect_to :back, notice: 'Operation Success'
+        redirect_to :back, notice: '操作成功'
       else
         render :edit
       end

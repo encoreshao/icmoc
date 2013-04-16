@@ -3,6 +3,10 @@ class ArticlesController < ApplicationController
 
   inherit_resources
 
+  def show
+    show!(resource.increment!(:view_count))
+  end
+
   def create
     create! { collection_path }
   end
