@@ -12,12 +12,11 @@
         = hidden_field_tag :prov, params[:prov]
         = submit_tag "Search", class: 'btn'
 
-
 %section.row
   .articles-container.span9
     - unless collection.blank?
       %table.table
-        - collection.each_slice(5) do |articles|
+        - collection.each_slice(6) do |articles|
           %tr
             - articles.each do |resource|
               %td
