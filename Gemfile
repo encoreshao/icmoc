@@ -16,6 +16,7 @@ gem 'symbolize',         require: 'symbolize/active_record'
 
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'rails_kindeditor'
 
 # Gems used only for assets and not required
 # in production environments by default.

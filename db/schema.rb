@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130415080954) do
+ActiveRecord::Schema.define(:version => 20130426064025) do
 
   create_table "article_levels", :force => true do |t|
     t.string   "name"
@@ -111,6 +111,15 @@ ActiveRecord::Schema.define(:version => 20130415080954) do
   add_index "districts", ["name"], :name => "index_districts_on_name"
   add_index "districts", ["name_abbr"], :name => "index_districts_on_name_abbr"
   add_index "districts", ["name_en"], :name => "index_districts_on_name_en"
+
+  create_table "kindeditor_assets", :force => true do |t|
+    t.string   "asset"
+    t.string   "file_name"
+    t.integer  "file_size"
+    t.string   "file_type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "personalities", :force => true do |t|
     t.string   "name"

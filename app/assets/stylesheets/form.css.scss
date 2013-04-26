@@ -10,6 +10,17 @@ body {
     }
     .control-group {
       margin-bottom: 0px;
+      &.radio_buttons {
+        *zoom: 1;
+        &:before,
+        &:after {
+          display: table;
+          content: "";
+        }
+        &:after {
+          clear: both;
+        }
+      }
       label {
         float: left;
         min-width: 15%;

@@ -21,7 +21,7 @@
             - articles.each do |resource|
               %td
                 .image
-                  = image_tag resource.image.thumb, class: 'img-polaroid'
+                  = image_tag 'default/110x90', class: 'img-polaroid', data: { src: resource.image.thumb.url }
                 .name
                   = link_to resource.swap_name, article_path(resource)
                 .detail
@@ -42,7 +42,7 @@
         - User.scoped.each do |user|
           %li
             .image
-              = image_tag user.avatar.thumb, size: '68x68', class: 'img-polaroid'
+              = image_tag 'default/80x80', class: 'img-polaroid', data: { src: user.avatar.thumb.url }
             .detail
               %strong= user.name
     .promote-articles
@@ -54,6 +54,15 @@
           - articles.each do |article|
             %li{style: 'float: left;margin-left: 10px;'}
               .image
-                = image_tag article.image.thumb, size: '80x80', class: 'img-polaroid'
+                = image_tag 'default/80x80', class: 'img-polaroid', data: { src: article.image.thumb.url}
               .detail
                 = article.swap_name
+
+
+
+:javascript
+  $(function(){
+    $('img').each(function(_) {
+       $(this).attr('src', $(this).data('src'));
+    });
+  });

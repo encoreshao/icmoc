@@ -26,9 +26,15 @@ body.articles > .container {
     table {
       tr {
         td {
-          margin-left: 14px;
+          border-top: none;
           display: inline-block;
           text-align: center;
+          .image {
+            img {
+              width: 110px;
+              height: 90px;
+            }
+          }
           .detail {
             max-height: 22px;
             overflow-y: hidden;
@@ -42,6 +48,18 @@ body.articles > .container {
       .control-group { margin-bottom: 5px; }
       input[type=text], input[type=password], input[type=email], textarea { 
         width: 400px; 
+      }
+    }
+  }
+  .article-detail {
+    .span9 {
+      table {
+        td {
+          &:first-child {
+            width: 90px;
+            vertical-align: top;
+          }
+        }
       }
     }
   }

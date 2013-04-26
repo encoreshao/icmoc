@@ -13,7 +13,7 @@
       = f.input :qq
       = f.input :slug
       = f.input :image, required: true
-      = f.input :description, as: :text, input_html: { rows: 5 }, required: true
+      = f.input :description, as: :kindeditor, :input_html => { :width => 700, :height => 300, simple_mode: true }, required: true
 
       .control-group
         %label
